@@ -1,0 +1,24 @@
+import "../../App.css";
+import "./Footer.css";
+import React from "react";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
+
+const Footer = () => {
+    return (
+        <div className="footer">
+            <div className="footer-container">
+                <p className="info">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</p><span>|</span>
+                <p className="info">info@SandBox.co</p><span>|</span>
+                <p className="info">(+1) 222- 456-78</p>
+            </div>
+            <div className="footer-icon-container">
+                <InstagramIcon />
+                <LinkedInIcon />
+            </div>
+        </div>
+    );
+};
+
+export default Footer;

@@ -1,0 +1,24 @@
+.footer{
+    padding: 0 24px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+
+.footer-container{
+    width: 60%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer-icon-container{
+    opacity: 76%;
+    width: 5%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
