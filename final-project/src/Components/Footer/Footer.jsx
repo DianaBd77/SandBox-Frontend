@@ -9,8 +9,8 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-container">
-                <p className="info">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</p><span>|</span>
-                <p className="info">info@SandBox.co</p><span>|</span>
+                <p className="info">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016 &nbsp;<span>| &nbsp;</span></p>
+                <p className="info">info@SandBox.co &nbsp;<span>| &nbsp;</span></p>
                 <p className="info">(+1) 222- 456-78</p>
             </div>
             <div className="footer-icon-container">
