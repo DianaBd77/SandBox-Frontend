@@ -1,10 +1,24 @@
 import "../../App.css";
 import "./Home.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 
 const Home = () => {
+    const navigate = useNavigate();
+
+    const loggedIn = () =>{
+        const token = localStorage.getItem;
+        if(token){
+            navigate("/list");
+        }else{
+            navigate("/sign-in");
+        }
+    }
+
+
+
     return (
         <div className="home">
             <div className="home-pic">
@@ -15,7 +29,7 @@ const Home = () => {
                 <p className="intro text">Free Online Poll to Make Professional Scheduling Easy</p>
                 <p className="feature text">Easy Scheduling</p>
                 <p className="feature text">Unlimited polls and participants</p>
-                <Button variant="contained" className="button text">Create New Poll</Button>
+                <Button variant="contained" className="button text" onClick={loggedIn}>Create New Poll</Button>
             </div>
         </div>
     );
