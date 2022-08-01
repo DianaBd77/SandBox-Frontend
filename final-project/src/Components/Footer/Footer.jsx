@@ -14,8 +14,8 @@ const Footer = () => {
                 <p className="info">(+1) 222- 456-78</p>
             </div>
             <div className="footer-icon-container">
-                <InstagramIcon />
-                <LinkedInIcon />
+                <InstagramIcon className="icons" />
+                <LinkedInIcon className="icons" />
             </div>
         </div>
     );

@@ -6,8 +6,21 @@
     align-items: center;
 }
 
+.home-pic{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-img{
+    width: 90%;
+    border-radius: 40px;
+}
+
+
 .home-container {
-    width: 80%;
+    width: 40%;
     height: 70%;
     display: flex;
     flex-flow: column;
@@ -26,7 +39,6 @@
 }
 
 .intro {
-    font-family: 'Open Sans', sans-serif;
     opacity: 87%;
     font-size: 1.3em;
     font-weight: bold;
@@ -35,8 +47,6 @@
 }
 
 .feature {
-    font-family: 'Open Sans', sans-serif;
-    ;
     margin: 0 0 10px 0;
     font-weight: 400 !important;
 }
@@ -88,15 +98,62 @@
     }
 }
 
+@media (max-width: 867px) {
+    .home-pic{
+        width: 65%;
+    }
+     
+    
+    .home-container {
+        width: 45%;
+    }
+
+    .button{
+        width: 90%;
+    }
+
+    .logo{
+        font-size: 3em;
+    }
+
+    .intro {
+        font-size: 1em;
+    }
+    
+    .feature {
+        font-size: .8em;
+    }
+
+
+}
+
 @media (max-width: 768px) {
     .home {
-        height: 70%;
-        margin-top: 56px;
-        align-items: flex-start;
+        height: 100%;
+        flex-flow: column;
+        justify-content: space-between;
     }
 
     .home-container{
+        width: 100%;
+        height: 70%;
+        margin-top: 24px;
+    } 
+
+    .text{
+        margin-left: 24px !important;
+    }
+
+    .home-pic{
+        width: 100%;
         height: 100%;
+        overflow: hidden;
+        border-radius: 0 0 40px 40px;
+    }
+
+    .home-img{
+        width: 100%;
+        height: auto;
     } 
 
     .button{
@@ -107,7 +164,19 @@
 
 @media (max-width: 576px) {
     .home {
-        height: 80%;
+        height: 90%;
+    }
+
+    .home-container{
+        height: 100%;
+    }
+
+    .home-pic{
+        align-items: flex-start;
+    }
+
+    .home-img{
+        border-radius: 0 0 40px 40px;
     }
 
     .button{

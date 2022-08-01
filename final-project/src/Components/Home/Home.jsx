@@ -7,12 +7,15 @@ import { Button } from "@mui/material";
 const Home = () => {
     return (
         <div className="home">
+            <div className="home-pic">
+                <img className="home-img" alt="scheduling" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"></img>
+            </div>
             <div className="home-container">
-                <h1 className="logo">SandBox</h1>
-                <p className="intro">Free Online Poll to Make Professional Scheduling Easy</p>
-                <p className="feature">Easy Scheduling</p>
-                <p className="feature">Unlimited polls and participants</p>
-                <Button variant="contained" className="button">Create New Poll</Button>
+                <h1 className="logo text">SandBox</h1>
+                <p className="intro text">Free Online Poll to Make Professional Scheduling Easy</p>
+                <p className="feature text">Easy Scheduling</p>
+                <p className="feature text">Unlimited polls and participants</p>
+                <Button variant="contained" className="button text">Create New Poll</Button>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./Components/Home/Home";
-// import Home from "./components/home/Home";
 import Footer from "./Components/Footer/Footer";
+import SignIn from "./Components/SignIn/SignIn";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,6 +13,7 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/sign-in" element={<SignIn />}></Route>
           </Routes>
         </Router>
       </div>
