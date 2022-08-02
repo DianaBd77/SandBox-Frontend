@@ -1,0 +1,8 @@
+.MuiFormControl-root{
+    width: 100% !important;
+    border-radius: 8px !important;
+}
+
+.MuiOutlinedInput-root{
+    border-radius: 8px !important;
+}
