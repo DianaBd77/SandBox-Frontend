@@ -7,7 +7,6 @@ import PollList from "./Components/PollList/PollList";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 const App = () => {
   return (
     <div className="app">
