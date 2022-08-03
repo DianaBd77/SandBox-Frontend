@@ -1,5 +1,5 @@
 import "./SignIn.css";
-import PassTextFiled from "../PassTextFiled/PassTextFiled";
+// import PassTextFiled from "../PassTextFiled/PassTextFiled";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,7 @@ const SignIn = () => {
 
   const login = () => {
     if (username === "" || password === "") {
-      setUsernameError("This Filed Can't be Empty");
-      setPassError("This Filed Can't be Empty");
+      setPassError(" All the Above Fields Required And Can't Be Empty!");
       return;
     }
     axios
