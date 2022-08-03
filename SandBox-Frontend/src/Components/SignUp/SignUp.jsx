@@ -50,6 +50,11 @@ const SignIn = () => {
       return;
     }
 
+    if(password.length < 8){
+      setPassError("Password Must Have at Least 8 Character");
+      return;
+    }
+
     axios
       .post(`http://localhost:3001/account/signup`, {
         username: username,
