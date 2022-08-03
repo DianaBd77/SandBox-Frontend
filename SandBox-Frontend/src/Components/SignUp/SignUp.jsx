@@ -1,18 +1,167 @@
 import "./SignUp.css";
-import PassTextFiled from "../PassTextFiled/PassTextFiled";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const SignUp = () => {
+const SignIn = () => {
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [pass, setPass] = useState("");
+  const [namesError, setNamesError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passError, setPassError] = useState("");
+
+  const emailValidation = (validEmail) => {
+    let validation =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi.test(
+        validEmail
+      );
+    if (validation === false & email !== "") {
+      setEmailError("Invalid Email Address");
+      return;
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const createAccount = () => {
+    emailValidation(email);
+
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      username === "" ||
+      password === "" ||
+      pass === ""
+    ) {
+      setPassError("All the Above Fields Required And Can't Be Empty!");
+      return;
+    }
+
+    if (password !== pass) {
+      setPassError("Passwords Do not Match");
+      return;
+    }
+
+    axios
+      .post(`http://localhost:3001/account/signup`, {
+        username: username,
+        password: password,
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+      })
+      .then((response) => {
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        setEmailError("");
+        setPassError("");
+        navigate("/list");
+      })
+      .catch((res) => {
+        let error = res.response.data;
+        let status = res.response.status;
+
+        if (status === 409) {
+          setEmailError(error);
+          setPassError("");
+        }else{
+          setPassError("Failed to Load Response Data")
+        }
+      });
+  };
 
   return (
     <div className="sign-up">
-      <p>Sign Up here!</p>
+      <div className="sign-up-container">
+        <h1 className="header">Sing Up</h1>
+        <div className="user-names">
+          <div className="name-container">
+            <TextField
+              className="text-filed names"
+              id="outlined-basic-firstName"
+              label="First Name"
+              variant="outlined"
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+            />
+          </div>
+          <div className="name-container">
+            <TextField
+              className="text-filed names"
+              id="outlined-basic-lastName"
+              label="Last Name"
+              variant="outlined"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+            />
+          </div>
+        </div>
+        <p className="sign-up-text error">{namesError}</p>
+        <TextField
+          className="text-filed"
+          id="outlined-basic-email"
+          label="Email"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <p className="sign-up-text error">{emailError}</p>
+        <TextField
+          className="text-filed"
+          id="outlined-basic-username"
+          label="Username"
+          variant="outlined"
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+        />
+        <p className="sign-up-text error">{usernameError}</p>
+        <div className="user-pass">
+          <div className="pass-container">
+            <TextField
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </div>
+          <div className="name-container">
+            <TextField
+              id="outlined-pass-input"
+              label="Confirm Password"
+              type="password"
+              autoComplete="current-password"
+              onChange={(e) => setPass(e.target.value)}
+              value={pass}
+            />
+          </div>
+        </div>
+        <p className="sign-up-text error">{passError}</p>
+        <p className="sign-up-text account-text">
+          Already have an account? &nbsp;
+          <span className="have-account" onClick={() => navigate("/sign-in")}>
+            Login
+          </span>
+        </p>
+        <Button
+          variant="contained"
+          className="sign-up-btn text"
+          onClick={createAccount}
+        >
+          Sign Up
+        </Button>
+      </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;
