@@ -8,11 +8,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   const loggedIn = () => {
-    const token = localStorage.getItem;
-    if (token) {
-      navigate("/list");
-    } else {
+    const token = localStorage.getItem("token");
+    if (token === "") {
       navigate("/sign-in");
+    } else {
+      navigate("/list");
     }
   };
 
