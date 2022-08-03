@@ -22,16 +22,17 @@ const SignIn = () => {
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi.test(
         validEmail
       );
-    if (validation === false & email !== "") {
+    return validation;
+  };
+
+  const createAccount = () => {
+    const emailValidate = emailValidation(email);
+    if ((emailValidate === false) & (email !== "")) {
       setEmailError("Invalid Email Address");
       return;
     } else {
       setEmailError("");
     }
-  };
-
-  const createAccount = () => {
-    emailValidation(email);
 
     if (
       firstName === "" ||
@@ -50,7 +51,7 @@ const SignIn = () => {
       return;
     }
 
-    if(password.length < 8){
+    if (password.length < 8) {
       setPassError("Password Must Have at Least 8 Character");
       return;
     }
@@ -73,12 +74,15 @@ const SignIn = () => {
       .catch((res) => {
         let error = res.response.data;
         let status = res.response.status;
-
-        if (status === 409) {
+        setUsernameError("");
+        setEmailError("");
+        setPassError("");
+        if ((status === 409) & (error === "Username Already Exist!")) {
+          setUsernameError(error);
+        } else if ((status === 409) & (error === "Email Already Exist!")) {
           setEmailError(error);
-          setPassError("");
-        }else{
-          setPassError("Failed to Load Response Data")
+        } else {
+          setPassError("Failed to Load Response Data");
         }
       });
   };
