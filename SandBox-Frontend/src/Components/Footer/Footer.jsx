@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-container">
         <p className="info">
-          Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016
+          Eaj 1st Block 1st Cross, Bangalore-56
           &nbsp;<span>| &nbsp;</span>
         </p>
         <p className="info">

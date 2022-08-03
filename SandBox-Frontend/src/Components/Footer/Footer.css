@@ -1,6 +1,6 @@
 
 .footer{
-    padding: 0 24px;
+    width: 90%;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
@@ -23,6 +23,9 @@
     justify-content: space-evenly;
 }
 
+.info{
+    font-size: .7em !important;
+}
 
 @media (max-width: 1400px) {
     .footer-container{

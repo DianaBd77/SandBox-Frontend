@@ -19,8 +19,8 @@ const App = () => {
             <Route path="/list" element={<PollList />}></Route>
           </Routes>
         </Router>
+        <Footer className="footer" />
       </div>
-      <Footer className="footer" />
     </div>
   );
 };
