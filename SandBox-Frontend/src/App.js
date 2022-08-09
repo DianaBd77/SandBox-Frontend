@@ -4,8 +4,10 @@ import Footer from "./Components/Footer/Footer";
 import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
 import PollList from "./Components/PollList/PollList";
+import Navigation from "./Components/BottomNavigation/BottomNavigation";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
           </Routes>
         </Router>
         <Footer className="footer" />
+        <Navigation />
       </div>
     </div>
   );

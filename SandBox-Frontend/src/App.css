@@ -1,7 +1,11 @@
 .app {
   height: 100vh;
+  width: 100%;
 }
 
+.MuiBox-root {
+  display: none;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -14,12 +18,11 @@
   height: 110%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   font-size: calc(10px + 2vmin);
 }
 
-.footer{
+.footer {
   bottom: 0;
 }
 
@@ -32,16 +35,19 @@
   }
 }
 
-
 @media (max-width: 768px) {
-  .App-header{
+  .App-header {
     width: 100%;
     height: 100%;
   }
 }
 
 @media (max-width: 576px) {
-  .App-header{
-    height: 80%;
+  .App-header {
+    height: 100%;
+    margin-bottom: 50px;
+  }
+  .MuiBox-root {
+    display: inline;
   }
 }
