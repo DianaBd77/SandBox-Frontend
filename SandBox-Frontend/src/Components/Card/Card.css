@@ -1,0 +1,31 @@
+.card{
+    display: flex !important;
+    flex-flow: row !important;
+    width: 80% !important;
+    box-shadow: none !important;
+    border-bottom: .5px solid #00000017 !important;
+    padding: 4px !important;
+}
+
+.card-img{
+    width: 110px !important;
+    height: 110px !important;
+    border-radius: 8px !important;
+}
+
+.card-content{
+    padding: 8px 16px !important;
+}
+
+.participant-container{
+    display: flex;
+    flex-flow: row;
+}
+
+.card-participants-text{
+    font-size: .9em !important;
+    margin: 0 0 0 4px !important;
+    color: black;
+    opacity: 67%;
+}
+
