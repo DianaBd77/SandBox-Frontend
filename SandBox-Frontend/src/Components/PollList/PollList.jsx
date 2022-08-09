@@ -54,7 +54,7 @@ const PollList = () => {
           }
           alt={"hangout"}
         />
-        <Card
+                <Card
           title={"Hangout"}
           description={"Do you wanna hangout tonight?"}
           img={
