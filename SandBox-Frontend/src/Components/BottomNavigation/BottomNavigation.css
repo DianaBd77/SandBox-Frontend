@@ -1,7 +1,7 @@
 .MuiBox-root{
-    background-color: blue;
-
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white !important;
 }
 
-
-/* ///app => dispaly: flex .... column .... footer disappear!!! */

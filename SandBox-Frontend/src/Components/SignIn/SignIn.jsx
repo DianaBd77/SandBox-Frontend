@@ -12,6 +12,13 @@ const SignIn = () => {
   const [usernameError, setUsernameError] = useState("");
   const [passError, setPassError] = useState("");
 
+
+    const handleSubmit = event => {
+    event.preventDefault();
+
+    console.log('form submitted ✅');
+  };
+
   const login = () => {
     if (username === "" || password === "") {
       setPassError(" All the Above Fields Required And Can't Be Empty!");
@@ -75,6 +82,7 @@ const SignIn = () => {
           variant="contained"
           className="sign-in-btn text"
           onClick={login}
+          type="submit"
         >
           Sign In
         </Button>

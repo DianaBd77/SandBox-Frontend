@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 56px;
 }
 
 .home-pic{
@@ -132,6 +133,7 @@
         height: 100%;
         flex-flow: column;
         justify-content: space-between;
+        margin-top: 0;
     }
 
     .home-container{

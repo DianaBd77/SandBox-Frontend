@@ -1,6 +1,9 @@
 .app {
   height: 100vh;
   width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .MuiBox-root {
@@ -13,18 +16,12 @@
   }
 }
 
-.App-header {
+.App-body {
   width: 100%;
-  height: 110%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
   font-size: calc(10px + 2vmin);
 }
 
-.footer {
-  bottom: 0;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -36,17 +33,16 @@
 }
 
 @media (max-width: 768px) {
-  .App-header {
+  .app{
     width: 100%;
-    height: 100%;
+  }
+
+  .App-body {
+    width: 100%;
   }
 }
 
 @media (max-width: 576px) {
-  .App-header {
-    height: 100%;
-    margin-bottom: 50px;
-  }
   .MuiBox-root {
     display: inline;
   }

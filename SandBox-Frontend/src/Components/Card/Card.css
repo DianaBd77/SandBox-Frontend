@@ -1,10 +1,11 @@
 .card{
     display: flex !important;
     flex-flow: row !important;
-    width: 80% !important;
+    width: 90% !important;
     box-shadow: none !important;
     border-bottom: .5px solid #00000017 !important;
     padding: 4px !important;
+    margin-left: 0px !important;
 }
 
 .card-img{
@@ -29,3 +30,32 @@
     opacity: 67%;
 }
 
+.card-header-container{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;   
+}
+
+
+.card-icon-container{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 10%;
+    opacity: 56% !important;
+}
+
+.MuiCardContent-root{
+    width: 100%;
+}
+
+
+@media (max-width: 576px) {
+    .MuiBox-root {
+      display: inline;
+    }
+    .card-icon-container{
+        width: 16%;
+    }
+  }
+  

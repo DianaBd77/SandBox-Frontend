@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import { Avatar } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import Edit from "@mui/icons-material/Edit";
+import Delete from "@mui/icons-material/Delete";
+import Share from "@mui/icons-material/Share";
 
 const ImgCard = ({ title, description, img, alt }) => {
   const navigate = useNavigate();
@@ -32,11 +35,18 @@ const ImgCard = ({ title, description, img, alt }) => {
         >
           {description}
         </Typography>
-        <div className="participant-container">
-          <Avatar sx={{ bgcolor: deepPurple[500], width: 28, height: 28 }}>
-            D
-          </Avatar>
-          <p className="card-participants-text"> + 3</p>
+        <div className="card-header-container">
+          <div className="participant-container">
+            <Avatar sx={{ bgcolor: deepPurple[500], width: 28, height: 28 }}>
+              D
+            </Avatar>
+            <p className="card-participants-text"> + 3</p>
+          </div>
+          <div className="card-icon-container">
+            <Share />
+            <Edit />
+            <Delete />
+          </div>
         </div>
       </CardContent>
       <CardActions></CardActions>

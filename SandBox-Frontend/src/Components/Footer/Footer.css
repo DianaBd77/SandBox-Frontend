@@ -1,94 +1,92 @@
-
-.footer{
-    /* width: 90%; */
-    padding: 0 24px;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+.footer {
+  width: 95%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 56px;
+  position: absolute;
+  bottom: 0;
 }
 
-
-.footer-container{
-    width: 60%;
-    display: flex;
-    flex-flow: row;
-    align-items: center;
+.footer-container {
+  width: 60%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
 
-.footer-icon-container{
-    opacity: 76%;
-    width: 5%;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-evenly;
+.footer-icon-container {
+  opacity: 76%;
+  width: 5%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.info{
-    font-size: .7em !important;
+.info {
+  font-size: 0.7em !important;
 }
 
 @media (max-width: 1400px) {
-    .footer-container{
-        width: 67%;
-    }
+  .footer-container {
+    width: 67%;
+  }
 }
 
 @media (max-width: 1200px) {
-    .footer-container{
-        width: 85%;
-    }
-    .footer-icon-container{
-        width: 10%;
-    }
+  .footer-container {
+    width: 85%;
+  }
+  .footer-icon-container {
+    width: 10%;
+  }
 }
 
 @media (max-width: 992px) {
-    .info{
-        font-size: .7em;
-    }
+  .info {
+    font-size: 0.7em;
+  }
 }
 
 @media (max-width: 768px) {
-    .footer{
-        flex-flow: column-reverse;
-        margin-top: 50px;
-    }
-    
-    
-    .footer-container{
-        flex-flow: column-reverse wrap;
-        align-items: flex-start;
-        justify-content:flex-start;
-    }
-    
-    .footer-icon-container{
-        width: 50%;
-        justify-content: flex-start;
-        margin-right: 50px;
-    }
+  .footer {
+    flex-flow: column-reverse;
+    margin-top: 50px;
+  }
 
-    .icons{
-        margin-right: 8px;
-    }
+  .footer-container {
+    flex-flow: column-reverse wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 
-    span{
-        display: none;
-    }
+  .footer-icon-container {
+    width: 50%;
+    justify-content: flex-start;
+    margin-right: 50px;
+  }
 
-    .info{
-        font-size: .8em;
-        margin: 5px 0;
-    }
-    
+  .icons {
+    margin-right: 8px;
+  }
+
+  span {
+    display: none;
+  }
+
+  .info {
+    font-size: 0.8em;
+    margin: 5px 0;
+  }
 }
 
 @media (max-width: 576px) {
-    .footer{
-        margin: 0;
-    }
+  .footer {
+    margin: 0;
+  }
 
-    .footer-container{
-        width: 100%;
-    }
+  .footer-container {
+    width: 100%;
+  }
 }

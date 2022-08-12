@@ -17,6 +17,8 @@ const SignIn = () => {
   const [usernameError, setUsernameError] = useState("");
   const [passError, setPassError] = useState("");
 
+  ///validtion  => frontend / backend?!
+
   const emailValidation = (validEmail) => {
     let validation =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi.test(

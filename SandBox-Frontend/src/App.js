@@ -8,11 +8,10 @@ import Navigation from "./Components/BottomNavigation/BottomNavigation";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 const App = () => {
   return (
     <div className="app">
-      <div className="App-header">
+      <div className="App-body">
         <Router>
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -21,9 +20,9 @@ const App = () => {
             <Route path="/list" element={<PollList />}></Route>
           </Routes>
         </Router>
-        <Footer className="footer" />
-        <Navigation />
       </div>
+      <Footer className="footer" />
+      <Navigation />
     </div>
   );
 };
