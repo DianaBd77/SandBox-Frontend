@@ -1,0 +1,71 @@
+.manage-poll{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  
+
+ .manage-poll-container{
+    width: 30%;
+    height: 70%;
+    display: flex;
+    flex-flow: column;
+    padding: 24px;
+ }
+
+ .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+  border-radius: 8px !important;
+ }
+
+
+ .manage-poll-text{
+  font-size: .7em;
+ }
+
+ .error{
+  color: red;
+ }
+
+
+.manage-poll-btn{
+  width: 100%;
+  height: 44px !important;
+  border-radius: 8px !important;
+  background-color: #6750A4 !important;
+}
+
+
+
+@media (max-width: 992px) {
+  .manage-poll-container{
+    width: 40%;
+ }
+}
+
+@media (max-width: 768px) {
+  .manage-poll{
+    padding-top: 24px;
+  }
+
+  .manage-poll-container{
+    width: 60%;
+    height: 90%;
+ }
+  .manage-poll-btn{
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .manage-poll-container{
+    border: none;
+    width: 100%;
+  }
+  .manage-poll{
+    padding: 0;
+  }
+
+  .header{
+    margin-top: 0;
+  }
+}
