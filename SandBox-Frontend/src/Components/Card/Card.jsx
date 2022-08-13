@@ -12,11 +12,13 @@ import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
 import Share from "@mui/icons-material/Share";
 
-const ImgCard = ({ title, description, img, alt }) => {
+const ImgCard = ({ title, description, img, alt, totalParticipants, participantName }) => {
   const navigate = useNavigate();
+  let participants = {totalParticipants} - 1;
+  let name = {participantName};
 
   return (
-    <Card className="card" onClick={() => navigate(`/${alt}`)}>
+    <Card className="card">
       <CardMedia
         className="card-img"
         component="img"
@@ -38,9 +40,9 @@ const ImgCard = ({ title, description, img, alt }) => {
         <div className="card-header-container">
           <div className="participant-container">
             <Avatar sx={{ bgcolor: deepPurple[500], width: 28, height: 28 }}>
-              D
+              {name}
             </Avatar>
-            <p className="card-participants-text"> + 3</p>
+            <p className="card-participants-text"> + {participants} </p>
           </div>
           <div className="card-icon-container">
             <Share />

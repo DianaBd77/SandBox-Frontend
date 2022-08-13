@@ -9,23 +9,64 @@ import axios from "axios";
 
 const PollList = () => {
   const navigate = useNavigate();
+  const [pollData, setPollData] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [imgURL, setImgURL] = useState("");
+  const [link, setLink] = useState("");
+  const [participants, setParticipants] = useState("");
+  const [participantName, setParticipantName] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    axios
+      .get(`http://localhost:3001/poll`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        let pollInfo = response.data;
+        setPollData(pollInfo);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMessage(error.message);
+      });
+  }, []);
+
+  let poll = pollData.map((data, index) => {
+    setTitle(data.title);
+    setDescription(data.description);
+    setImgURL(data.img_url);
+    setLink(data.link);
+    setParticipants(data.participants);
+    setParticipantName(data.name);
+
+    return (
+      <Card
+        key={index}
+        title={title}
+        description={description}
+        img={imgURL}
+        alt={title}
+        totalParticipants={participants}
+        participantName={participantName}
+        link={link}
+      />
+    );
+  });
 
   return (
     <div className="list">
       <Header />
-      <div className="list-container">
-        <Card
-          title={"Hangout"}
-          description={"Do you wanna hangout tonight?"}
-          img={
-            "https://images.unsplash.com/photo-1532635236-d50c8592eb08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=811&q=80"
-          }
-          alt={"hangout"}
-        />
-        <Fab color="primary" aria-label="add">
-          <AddIcon />
-        </Fab>
-      </div>
+      {poll}
+      <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
     </div>
   );
 };
