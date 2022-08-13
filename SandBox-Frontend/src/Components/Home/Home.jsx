@@ -3,17 +3,28 @@ import "./Home.css";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import axios from "axios";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const loggedIn = () => {
     const token = localStorage.getItem("token");
-    if (token === "") {
-      navigate("/sign-in");
-    } else {
-      navigate("/list");
-    }
+    axios
+      .get(`http://localhost:3001/account/logged-in`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        navigate("/list");
+      })
+      .catch((res) => {
+        let status = res.response.status;
+        if (status === 401) {
+          navigate("/sign-in");
+        }
+      });
   };
 
   return (
