@@ -56,10 +56,10 @@ const ManagePoll = () => {
         />
         <p className="manage-poll-text error"></p>
         <TextField
-          className="text-filed"
-          id="outlined-basic"
+          id="outlined-multiline-static"
           label="Description"
-          variant="outlined"
+          multiline
+          rows={4}
           onChange={(e) => setDescription(e.target.value)}
           value={description}
         />
