@@ -13,12 +13,6 @@ const SignIn = () => {
   const [passError, setPassError] = useState("");
 
 
-    const handleSubmit = event => {
-    event.preventDefault();
-
-    console.log('form submitted ✅');
-  };
-
   const login = () => {
     if (username === "" || password === "") {
       setPassError(" All the Above Fields Required And Can't Be Empty!");
@@ -30,6 +24,7 @@ const SignIn = () => {
         password: password,
       })
       .then((response) => {
+        console.log('token :>> ', response.data.token);
         const token = response.data.token;
         localStorage.setItem("token", token);
         setUsernameError("");
