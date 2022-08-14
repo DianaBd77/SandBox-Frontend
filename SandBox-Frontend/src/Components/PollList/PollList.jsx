@@ -19,6 +19,25 @@ const PollList = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  const loggedIn = () => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/account/logged-in`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        navigate("/create-poll");
+      })
+      .catch((res) => {
+        let status = res.response.status;
+        if (status === 401) {
+          navigate("/sign-in");
+        }
+      });
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -29,8 +48,8 @@ const PollList = () => {
         },
       })
       .then((response) => {
-        let pollInfo = response.data;
-        setPollData(pollInfo);
+        let pollData = response.data;
+        setPollData(pollData);
       })
       .catch((error) => {
         console.log(error);
@@ -38,33 +57,37 @@ const PollList = () => {
       });
   }, []);
 
-  let poll = pollData.map((data, index) => {
-    setTitle(data.title);
-    setDescription(data.description);
-    setImgURL(data.img_url);
-    setLink(data.link);
-    setParticipants(data.participants);
-    setParticipantName(data.name);
+  // let poll = pollData.map((data, index) => {
+  //   setTitle(data.title);
+  //   setDescription(data.description);
+  //   setImgURL(data.img_url);
+  //   setLink(data.link);
+  //   setParticipants(data.participants);
+  //   setParticipantName(data.name);
 
-    return (
-      <Card
-        key={index}
-        title={title}
-        description={description}
-        img={imgURL}
-        alt={title}
-        totalParticipants={participants}
-        participantName={participantName}
-        link={link}
-      />
-    );
-  });
+  //   return (
+  //     <Card
+  //       key={index}
+  //       title={title}
+  //       description={description}
+  //       img={imgURL}
+  //       alt={title}
+  //       totalParticipants={participants}
+  //       participantName={participantName}
+  //       link={link}
+  //     />
+  //   );
+  // });
 
   return (
     <div className="list">
       <Header />
-      {poll}
-      <Fab color="primary" aria-label="add">
+      {/* {poll} */}
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={loggedIn}
+      >
         <AddIcon />
       </Fab>
     </div>
