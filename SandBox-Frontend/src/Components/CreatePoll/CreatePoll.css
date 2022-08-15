@@ -1,5 +1,6 @@
 .create-poll{
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
   }  
@@ -12,13 +13,22 @@
     padding: 24px;
  }
 
+ .poll-headers{
+  font-size: 1em;
+  color:black;
+  opacity: 38%;
+  margin: 4px;
+ }
+
+
  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
   border-radius: 8px !important;
  }
 
 
- .create-poll-text{
+ .poll-error-text{
   font-size: .7em;
+  margin: 8px;
  }
 
  .error{
@@ -51,10 +61,6 @@
 }
 
 @media (max-width: 768px) {
-  .create-poll{
-    padding-top: 24px;
-  }
-
   .create-poll-container{
     width: 70%;
     height: 90%;
@@ -62,22 +68,15 @@
   .create-poll-btn{
     margin: 0 !important;
   }
-
-  .create-poll-text{
-    margin: 8px;
-   }
   
 }
 
 @media (max-width: 576px) {
   .create-poll-container{
     border: none;
-    width: 100%;
+    width: 80%;
+    padding: 0px;
   }
-  .create-poll{
-    padding: 0;
-  }
-
   .header{
     margin-top: 0;
   }

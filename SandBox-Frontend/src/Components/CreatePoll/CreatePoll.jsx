@@ -1,4 +1,5 @@
 import "./CreatePoll.css";
+import Header from "../Header/Header";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +14,26 @@ const CreatePoll = () => {
   const [secondOption, setSecondOption] = useState("");
   const [thirdOption, setThirdOption] = useState("");
   const [error, setError] = useState("");
-
+  const [name, setName] = useState("");
   const [insertedID, setInsertedID] = useState("");
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/user`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const username = res.data[0].username;
+        setName(username);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  }, []);
 
   const createNewPoll = async () => {
     if (
@@ -43,8 +62,9 @@ const CreatePoll = () => {
       )
       .then((res) => {
         const id = res.data[0].insertId;
-        setInsertedID(id);
-        createPollItems(insertedID);
+        // setInsertedID(id);
+        // createPollItems(insertedID);
+        createPollItems(id);
       })
       .catch((res) => {
         let error = res.response.data;
@@ -105,8 +125,11 @@ const CreatePoll = () => {
 
   return (
     <div className="create-poll">
+      <Header
+      name = {name}
+      />
       <div className="create-poll-container">
-        <h1 className="header">Create Poll</h1>
+        <h1 className="poll-headers">Create Poll</h1>
         <TextField
           className="text-filed"
           id="outlined-basic"
@@ -115,7 +138,7 @@ const CreatePoll = () => {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-        <p className="create-poll-text error"></p>
+        <p className="poll-error-text error"></p>
         <TextField
           id="outlined-multiline-static"
           label="Description"
@@ -124,7 +147,7 @@ const CreatePoll = () => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
         />
-        <p className="create-poll-text error"></p>
+        <p className="poll-error-text error"></p>
         <TextField
           className="text-filed"
           id="outlined-basic"
@@ -133,7 +156,7 @@ const CreatePoll = () => {
           onChange={(e) => setImgURL(e.target.value)}
           value={imgURL}
         />
-        <p className="create-poll-text error"></p>
+        <p className="poll-error-text error"></p>
         <div className="option-container">
           <div className="options">
             <TextField
@@ -166,7 +189,7 @@ const CreatePoll = () => {
             />
           </div>
         </div>
-        <p className="create-poll-text error">{error}</p>
+        <p className="poll-error-text error">{error}</p>
         <Button
           variant="contained"
           className="create-poll-btn text"
