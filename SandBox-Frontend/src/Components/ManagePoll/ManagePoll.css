@@ -1,5 +1,4 @@
 .manage-poll {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,11 +55,11 @@
 @media (max-width: 576px) {
   .manage-poll-container {
     border: none;
-    width: 80%;
-    padding: 0;
+    width: 90%;
+    padding: 16px;
   }
   .manage-poll {
-    padding: 0;
+    padding-top: 0;
   }
 
   .header {

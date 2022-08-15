@@ -51,8 +51,6 @@ const ManagePoll = () => {
       });
   }, []);
 
-
-
   const editPollInfo = () => {
     if (title === "") {
       setError("Title Fields Required And Can't Be Empty!");
