@@ -9,8 +9,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-container">
         <p className="info">
-          Eaj 1st Block 1st Cross, Bangalore-56
-          &nbsp;<span>| &nbsp;</span>
+          Eaj 1st Block 1st Cross, Bangalore-56 &nbsp;<span>| &nbsp;</span>
         </p>
         <p className="info">
           info@SandBox.co &nbsp;<span>| &nbsp;</span>
