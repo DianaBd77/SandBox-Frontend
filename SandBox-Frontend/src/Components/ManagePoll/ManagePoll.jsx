@@ -1,4 +1,5 @@
 import "./ManagePoll.css";
+import Header from "../Header/Header";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -9,43 +10,86 @@ const ManagePoll = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/user`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const username = res.data[0].username;
+        setName(username);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+
+    axios
+      .get(
+        `http://localhost:3001/poll/${"3dcf538f-7a9f-4e95-933d-879451be5e31"}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        let title = res.data[0].title;
+        setTitle(title);
+        let description = res.data[0].description;
+        setDescription(description);
+        let imgURL = res.data[0].img_url;
+        setImgURL(imgURL);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  }, []);
+
+
 
   const editPollInfo = () => {
-    console.log('edit :>> ');
-    // if (username === "" || password === "") {
-    //   setPassError(" All the Above Fields Required And Can't Be Empty!");
-    //   return;
-    // }
-    // axios
-    //   .post(`http://localhost:3001/account/login`, {
-    //     username: username,
-    //     password: password,
-    //   })
-    //   .then((response) => {
-    //     const token = response.data.token;
-    //     localStorage.setItem("token", token);
-    //     setUsernameError("");
-    //     setPassError("");
-    //     navigate("/list");
-    //   })
-    //   .catch((res) => {
-    //     let error = res.response.data;
-    //     let status = res.response.status;
-
-    //     if (status === 404) {
-    //       setUsernameError(error);
-    //       setPassError("");
-    //     } else if (status === 403) {
-    //       setPassError(error);
-    //       setUsernameError("");
-    //     }
-    //   });
+    if (title === "") {
+      setError("Title Fields Required And Can't Be Empty!");
+      return;
+    }
+    const token = localStorage.getItem("token");
+    axios
+      .patch(
+        `http://localhost:3001/poll/${"3dcf538f-7a9f-4e95-933d-879451be5e31"}`,
+        {
+          title: title,
+          description: description,
+          img_url: imgURL,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        navigate("/list");
+      })
+      .catch((res) => {
+        let error = res.response.data;
+        let status = res.response.status;
+        if (status === 401) {
+          navigate("/sign-in");
+        }
+      });
   };
 
   return (
     <div className="manage-poll">
+      <Header name={name} />
       <div className="manage-poll-container">
-        <h1 className="header">Manage Poll</h1>
+        <h1 className="poll-headers">Manage Poll</h1>
         <TextField
           className="text-filed"
           id="outlined-basic"
@@ -54,7 +98,7 @@ const ManagePoll = () => {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-        <p className="manage-poll-text error"></p>
+        <p className="poll-error-text error"></p>
         <TextField
           id="outlined-multiline-static"
           label="Description"
@@ -63,7 +107,7 @@ const ManagePoll = () => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
         />
-        <p className="manage-poll-text error"></p>
+        <p className="poll-error-text error"></p>
         <TextField
           className="text-filed"
           id="outlined-basic"
@@ -72,7 +116,7 @@ const ManagePoll = () => {
           onChange={(e) => setImgURL(e.target.value)}
           value={imgURL}
         />
-        <p className="manage-poll-text error"></p>
+        <p className="poll-error-text error">{error}</p>
         <Button
           variant="contained"
           className="manage-poll-btn text"
