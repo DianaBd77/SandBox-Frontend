@@ -11,7 +11,7 @@ const Home = () => {
   const loggedIn = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/account/logged-in`, {
+      .get(`http://localhost:3001/user`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -19,8 +19,8 @@ const Home = () => {
       .then(() => {
         navigate("/list");
       })
-      .catch((res) => {
-        let status = res.response.status;
+      .catch((error) => {
+        let status = error.response.status;
         if (status === 401) {
           navigate("/sign-in");
         }
