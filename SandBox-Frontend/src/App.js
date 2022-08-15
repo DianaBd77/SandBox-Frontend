@@ -4,6 +4,7 @@ import Footer from "./Components/Footer/Footer";
 import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
 import PollList from "./Components/PollList/PollList";
+import UserPanel from "./Components/UserPanel/UserPanel";
 import ManagePoll from "./Components/ManagePoll/ManagePoll";
 import CreatePoll from "./Components/CreatePoll/CreatePoll";
 import Navigation from "./Components/BottomNavigation/BottomNavigation";
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/list" element={<PollList />}></Route>
             <Route path="/manage-poll" element={<ManagePoll />}></Route>
             <Route path="/create-poll" element={<CreatePoll />}></Route>
+            <Route path="/panel" element={<UserPanel />}></Route>
           </Routes>
         </Router>
       </div>
