@@ -1,0 +1,71 @@
+.modal-box {
+  width: 80% !important;
+  display: flex !important;
+  flex-flow: column !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: white !important;
+  box-shadow: 24 !important;
+  border: none !important;
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+}
+
+.close-delete-link {
+  position: absolute;
+  top: 24px !important;
+  left: 24px !important;
+}
+
+.close-delete-link:hover {
+  cursor: pointer;
+}
+
+.delete-link-header {
+  color: #f05338;
+  font-size: 1.4em !important;
+  font-weight: bold !important;
+}
+
+.delete-link-text {
+  opacity: 67%;
+}
+
+.delete-link-button {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete-button {
+  width: 48% !important;
+  height: 46px !important;
+  border-radius: 8px !important;
+}
+
+.cancel-poll-btn {
+  color: #f05338 !important;
+  border: #f05338 1px solid !important;
+}
+
+.delete-poll-btn {
+  background-color: #f05338 !important;
+}
+
+@media (max-width: 576px) {
+  .modal-box {
+    padding: 24px !important;
+  }
+
+  .close-delete-link {
+    top: 12px !important;
+    left: 12px !important;
+  }
+}
