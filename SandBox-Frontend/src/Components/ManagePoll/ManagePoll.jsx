@@ -73,8 +73,8 @@ const ManagePoll = () => {
         console.log("res :>> ", res);
         navigate("/list");
       })
-      .catch((res) => {
-        let status = res.response.status;
+      .catch((err) => {
+        let status = err.response.status;
         if (status === 401) {
           navigate("/sign-in");
         }
