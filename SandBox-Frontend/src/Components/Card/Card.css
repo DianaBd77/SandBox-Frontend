@@ -1,61 +1,75 @@
-.card{
-    display: flex !important;
-    flex-flow: row !important;
-    width: 90% !important;
-    box-shadow: none !important;
-    border-bottom: .5px solid #00000017 !important;
-    padding: 4px !important;
-    margin-left: 0px !important;
+.card {
+  display: flex !important;
+  flex-flow: row !important;
+  align-items: center !important;
+  width: 90% !important;
+  box-shadow: none !important;
+  border-bottom: 0.5px solid #00000017 !important;
+  padding: 4px !important;
+  margin-left: 0px !important;
 }
 
-.card-img{
-    width: 110px !important;
-    height: 110px !important;
-    border-radius: 8px !important;
+.card-pic-container {
+  width: 110px;
+  height: 110px;
+  background-color: #f5f3f375 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
 
-.card-content{
-    padding: 8px 16px !important;
+.card-img {
+  width: 110px !important;
+  height: 110px !important;
+  border-radius: 8px !important;
 }
 
-.participant-container{
-    display: flex;
-    flex-flow: row;
+.card-content {
+  padding: 8px 16px !important;
 }
 
-.card-participants-text{
-    font-size: .9em !important;
-    margin: 0 0 0 4px !important;
-    color: black;
-    opacity: 67%;
+.participant-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
 
-.card-header-container{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;   
+.card-participants-text {
+  font-size: 0.9em !important;
+  margin: 0 0 0 4px !important;
+  color: black;
+  opacity: 67%;
 }
 
-
-.card-icon-container{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    width: 10%;
-    opacity: 56% !important;
+.card-header-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
 }
 
-.MuiCardContent-root{
-    width: 100%;
+.card-icon-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 10%;
+  opacity: 38% !important;
 }
 
+.MuiCardContent-root {
+  width: 100%;
+}
+
+.card-icons:hover {
+  cursor: pointer !important;
+}
 
 @media (max-width: 576px) {
-    .MuiBox-root {
-      display: inline;
-    }
-    .card-icon-container{
-        width: 16%;
-    }
+  .MuiBox-root {
+    display: inline;
   }
-  
+  .card-icon-container {
+    width: 16%;
+  }
+}
