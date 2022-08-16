@@ -4,10 +4,11 @@ import { BottomNavigationAction, BottomNavigation, Box } from "@mui/material";
 import Home from "@mui/icons-material/Home";
 import Category from "@mui/icons-material/Category";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import { useNavigate } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ home }) => {
   const [value, setValue] = useState(0);
-
+  const navigate = useNavigate();
   return (
     <Box>
       <BottomNavigation
@@ -17,9 +18,27 @@ const Navigation = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<Home />} />
-        <BottomNavigationAction label="Poll" icon={<Category />} />
-        <BottomNavigationAction label="Panel" icon={<AccountCircle />} />
+        <BottomNavigationAction
+          label="Home"
+          icon={<Home />}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+        <BottomNavigationAction
+          label="Poll"
+          icon={<Category />}
+          onClick={() => {
+            navigate("/list");
+          }}
+        />
+        <BottomNavigationAction
+          label="Panel"
+          icon={<AccountCircle />}
+          onClick={() => {
+            navigate("/panel");
+          }}
+        />
       </BottomNavigation>
     </Box>
   );
