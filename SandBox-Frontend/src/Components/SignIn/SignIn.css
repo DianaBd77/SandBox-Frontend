@@ -56,8 +56,16 @@
 @media (max-width: 992px) {
   .sign-in-container{
     width: 40%;
+    height: 70%;
  }
 }
+
+@media (max-width: 867px) {
+  .sign-in-btn{
+    margin: 0 !important;
+  }
+}
+
 
 @media (max-width: 768px) {
   .sign-in{
@@ -66,7 +74,6 @@
 
   .sign-in-container{
     width: 60%;
-    height: 90%;
  }
   .sign-in-btn{
     margin: 0 !important;

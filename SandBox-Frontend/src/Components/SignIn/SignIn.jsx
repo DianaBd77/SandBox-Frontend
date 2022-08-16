@@ -12,7 +12,6 @@ const SignIn = () => {
   const [usernameError, setUsernameError] = useState("");
   const [passError, setPassError] = useState("");
 
-
   const login = () => {
     if (username === "" || password === "") {
       setPassError(" All the Above Fields Required And Can't Be Empty!");
@@ -24,7 +23,7 @@ const SignIn = () => {
         password: password,
       })
       .then((response) => {
-        console.log('token :>> ', response.data.token);
+        console.log("token :>> ", response.data.token);
         const token = response.data.token;
         localStorage.setItem("token", token);
         setUsernameError("");
