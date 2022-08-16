@@ -1,5 +1,5 @@
 import "./SignUp.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -16,8 +16,6 @@ const SignIn = () => {
   const [emailError, setEmailError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passError, setPassError] = useState("");
-
-  ///validtion  => frontend / backend?!
 
   const emailValidation = (validEmail) => {
     let validation =
