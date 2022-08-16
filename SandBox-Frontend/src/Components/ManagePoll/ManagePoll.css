@@ -1,6 +1,6 @@
 .manage-poll {
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-flow: column;
 }
@@ -38,11 +38,13 @@
   }
 }
 
-@media (max-width: 768px) {
-  .manage-poll {
-    padding-top: 24px;
+@media (max-width: 867px) {
+  .manage-poll-btn {
+    margin: 0px !important;
   }
+}
 
+@media (max-width: 768px) {
   .manage-poll-container {
     width: 70%;
     height: 90%;
