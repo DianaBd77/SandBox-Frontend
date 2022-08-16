@@ -1,11 +1,9 @@
 import "./Header.css";
-import React, { useState } from "react";
-import { Avatar } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
+import AvatarPro from "../Avatar/Avatar";
 
 const Header = ({ name }) => {
   let word = name.split("");
-  let firstWord = word[0];
+  let username = name && word[0].toUpperCase() + word.slice(1).join("");
 
   return (
     <div className="header-component">
@@ -15,9 +13,7 @@ const Header = ({ name }) => {
           <p className="app-bar-text">Home</p>
           <p className="app-bar-text">Poll List</p>
           <p className="app-bar-text">Create +</p>
-          <Avatar sx={{ bgcolor: deepPurple[500], width: 36, height: 36 }}>
-            {firstWord}
-          </Avatar>
+          <AvatarPro username={username} />
         </div>
       </div>
     </div>
