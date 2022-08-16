@@ -93,8 +93,8 @@ const SignIn = () => {
     <div className="sign-up">
       <div className="sign-up-container">
         <h1 className="header">Sing Up</h1>
-        <div className="user-names">
-          <div className="name-container">
+        <div className="sign-up-username">
+          <div className="sign-up-name-container">
             <TextField
               className="text-filed names"
               id="outlined-basic-firstName"
@@ -104,7 +104,7 @@ const SignIn = () => {
               value={firstName}
             />
           </div>
-          <div className="name-container">
+          <div className="sign-up-name-container">
             <TextField
               className="text-filed names"
               id="outlined-basic-lastName"
@@ -145,7 +145,7 @@ const SignIn = () => {
               value={password}
             />
           </div>
-          <div className="name-container">
+          <div className="pass-container">
             <TextField
               id="outlined-pass-input"
               label="Confirm Password"
