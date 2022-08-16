@@ -1,0 +1,77 @@
+.modal-box {
+  width: 80% !important;
+  display: flex !important;
+  flex-flow: column !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: white !important;
+  box-shadow: 24 !important;
+  border: none !important;
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+}
+
+.close-share-link {
+  position: absolute;
+  top: 24px !important;
+  left: 24px !important;
+}
+
+.close-share-link:hover {
+  cursor: pointer;
+}
+
+.share-link-header {
+  color: #381e72;
+  font-size: 1.4em !important;
+  font-weight: bold !important;
+}
+
+.share-link-text {
+  opacity: 67%;
+}
+
+.share-link-input {
+  width: 90%;
+  margin-top: 24px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.share-link-text-filed {
+  width: 80% !important;
+}
+
+.copy-share-link {
+  opacity: 38%;
+  width: 32px !important;
+  height: 32px !important;
+  margin-left: 24px !important;
+}
+
+.copy-share-link:hover {
+  cursor: pointer !important;
+  color: black !important;
+  opacity: 100% !important;
+}
+
+.copy-share-link:active {
+  color: black !important;
+  opacity: 100% !important;
+}
+
+@media (max-width: 576px) {
+  .modal-box {
+    padding: 24px !important;
+  }
+
+  .close-share-link {
+    top: 12px !important;
+    left: 12px !important;
+  }
+}
