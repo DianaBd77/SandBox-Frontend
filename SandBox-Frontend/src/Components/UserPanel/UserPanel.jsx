@@ -1,14 +1,13 @@
 import "./UserPanel.css";
 import Header from "../Header/Header";
 import axios from "axios";
-import { Avatar } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
+import AvatarPro from "../Avatar/Avatar";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import React, { useState, useEffect } from "react";
 
 const UserPanel = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(" ");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -27,18 +26,16 @@ const UserPanel = () => {
       });
   }, []);
 
-  let word = name.split("");
-  let firstWord = word[0];
+  let word = name && name.split("");
+  let username = name && word[0].toUpperCase() + word.slice(1).join("");
 
   return (
     <div className="panel">
       <Header name={name} />
       <div className="panel-container">
         <div className="name-container">
-          <Avatar sx={{ bgcolor: deepPurple[500], width: 36, height: 36 }}>
-            {firstWord}
-          </Avatar>
-          <p className="panel-username">{name}</p>
+          <AvatarPro username={username} />
+          <p className="panel-username">{username}</p>
         </div>
         <div className="brand-info-container">
           <div>
@@ -46,7 +43,7 @@ const UserPanel = () => {
             <p className="brand-info">info@SandBox.co</p>
             <p className="brand-info">Eaj 1st Block 1st Cross, Bangalore-56</p>
           </div>
-          <div className="footer-icon-container">
+          <div className="footer-icon-container panel-icons">
             <InstagramIcon className="icons" />
             <LinkedInIcon className="icons" />
           </div>
