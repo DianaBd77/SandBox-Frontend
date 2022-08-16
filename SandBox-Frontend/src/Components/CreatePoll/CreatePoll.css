@@ -3,11 +3,11 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  min-height: 90vh;
 }
 
 .create-poll-container {
   width: 50%;
-  height: 90%;
   display: flex;
   flex-flow: column;
   padding: 24px;
@@ -17,7 +17,7 @@
   font-size: 1em;
   color: black;
   opacity: 38%;
-  margin: 0 0 8px 0;
+  margin: 24px 0;
 }
 
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
@@ -26,7 +26,6 @@
 
 .poll-error-text {
   font-size: 0.7em;
-  margin: 8px;
 }
 
 .error {
@@ -36,7 +35,7 @@
 .option-container {
   display: flex;
   flex-flow: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .options {
