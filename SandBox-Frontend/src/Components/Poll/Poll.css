@@ -1,0 +1,41 @@
+.poll-page {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.poll-page-container {
+  width: 80%;
+  padding: 24px 0;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.poll-img-container {
+  width: 60%;
+  height: 250px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+}
+
+.poll-page-img {
+  width: 100%;
+  height: auto;
+}
+
+.poll-text-container{
+    width: 60%;
+}
+
+.poll-header-text{
+    font-size: 1.3em;
+    margin: 16px 0;
+}
+
+.poll-description-text{
+    margin: 8px 0;
+}
