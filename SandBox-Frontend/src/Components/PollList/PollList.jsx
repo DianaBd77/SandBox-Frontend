@@ -10,17 +10,8 @@ import axios from "axios";
 
 const PollList = () => {
   const navigate = useNavigate();
-  const [pollData, errorMessage] = usePollData("");
-  // const [pollData, setPollData] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [imgURL, setImgURL] = useState("");
-  // const [link, setLink] = useState("");
-  // const [participants, setParticipants] = useState("");
-  // const [participantName, setParticipantName] = useState("");
+  const [pollData] = usePollData();
   const [name, setName] = useState("");
-
-  // const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -39,34 +30,26 @@ const PollList = () => {
       });
   }, []);
 
-  console.log("pollData :>> ", pollData);
-
-  // let poll = pollData.map((data, index) => {
-  //   setTitle(data.title);
-  //   setDescription(data.description);
-  //   setImgURL(data.img_url);
-  //   setLink(data.link);
-  //   setParticipants(data.participants);
-  //   setParticipantName(data.name);
-
-  //   return (
-  //     <Card
-  //       key={index}
-  //       title={title}
-  //       description={description}
-  //       img={imgURL}
-  //       alt={title}
-  //       totalParticipants={participants}
-  //       participantName={participantName}
-  //       link={link}
-  //     />
-  //   );
-  // });
+  let poll = pollData.map((data) => {
+    return (
+      <Card
+        key={data.id}
+        title={data.title}
+        description={data.description}
+        img={data.img_url}
+        alt={data.title}
+        participants={data.participants}
+        name={data.name}
+        link={data.link}
+        id={data.id}
+      />
+    );
+  });
 
   return (
     <div className="list">
       <Header name={name} />
-      {/* {poll} */}
+      <div className="list-card-container">{poll}</div>
       <Fab
         color="primary"
         aria-label="add"

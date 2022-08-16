@@ -1,5 +1,6 @@
 .list{
     width: 100%;
+    min-height: 90vh;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -10,12 +11,20 @@
     margin-top: 24px;
 }
 
+.list-card-container{
+  width: 100%;
+  padding-top: 24px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
 
 .MuiFab-root{
     background-color: #6750A4 !important;
     position: fixed !important;
     bottom: 56px !important;
-    right: 24px !important;
+    right: 16px !important;
     margin-left: 0 !important;
 }
 
@@ -28,4 +37,7 @@
   
 
 @media (max-width: 576px) {
+  .list{
+    min-height: 110vh;
+  }
 }
