@@ -16,13 +16,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 8px !important;
+  border: none !important;
 }
 
 .card-img {
   width: 110px !important;
   height: 110px !important;
   border-radius: 8px !important;
+  border: none !important;
 }
 
 .card-content {

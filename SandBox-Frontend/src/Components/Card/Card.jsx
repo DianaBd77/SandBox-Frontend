@@ -40,7 +40,7 @@ const ImgCard = ({
       <CardMedia
         className="card-img"
         component="img"
-        alt={alt}
+        // alt={alt}
         width = "110"
         height="110"
         image={img}
