@@ -1,0 +1,34 @@
+.poll-link-box {
+  min-height: 89vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.poll-link-page-container {
+  width: 80%;
+  min-height: 70vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.poll-link-info-container {
+  width: 100%;
+}
+
+.share-poll-link-box {
+  width: 100% !important;
+  justify-content: space-between !important;
+  margin-bottom: 24px !important;
+}
+
+.share-poll-link-text-field {
+  width: 90% !important;
+}
+
+.poll-link-button {
+  margin: 24px 0 !important;
+}

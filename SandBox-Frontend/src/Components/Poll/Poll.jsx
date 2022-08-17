@@ -1,5 +1,6 @@
 import "./Poll.css";
 import Header from "../Header/Header";
+import useUsername from "../Header/useUsername";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -8,26 +9,13 @@ import axios from "axios";
 const Poll = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [name] = useUsername();
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/user`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        const username = res.data[0].username;
-        setName(username);
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
 
     axios
       .get(
@@ -51,20 +39,18 @@ const Poll = () => {
       });
   }, []);
 
-
-
   return (
     <div className="page-container">
       <Header name={name} />
       <div className="poll-page">
         <div className="poll-page-container">
-            <div className="poll-img-container">
+          <div className="poll-img-container">
             <img className="poll-page-img" src={imgURL}></img>
-            </div>
-            <div className="poll-text-container">
+          </div>
+          <div className="poll-text-container">
             <h1 className="poll-header-text">{title}</h1>
             <p className="poll-description-text">{description}</p>
-            </div>
+          </div>
         </div>
       </div>
     </div>
