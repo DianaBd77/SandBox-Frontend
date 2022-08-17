@@ -1,30 +1,12 @@
 import "./UserPanel.css";
 import Header from "../Header/Header";
-import axios from "axios";
+import useUsername from "../Header/useUsername";
 import AvatarPro from "../Avatar/Avatar";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import React, { useState, useEffect } from "react";
 
 const UserPanel = () => {
-  const [name, setName] = useState(" ");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/user`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        const username = res.data[0].username;
-        setName(username);
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
-  }, []);
+  const [name] = useUsername();
 
   let word = name && name.split("");
   let username = name && word[0].toUpperCase() + word.slice(1).join("");

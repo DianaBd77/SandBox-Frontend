@@ -1,5 +1,6 @@
 import "./ManagePoll.css";
 import Header from "../Header/Header";
+import useUsername from "../Header/useUsername";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,28 +8,15 @@ import axios from "axios";
 
 const ManagePoll = () => {
   const navigate = useNavigate();
+  const [name] = useUsername();
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/user`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        const username = res.data[0].username;
-        setName(username);
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
 
     axios
       .get(`http://localhost:3001/poll/${id}`, {

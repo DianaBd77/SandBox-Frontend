@@ -1,6 +1,6 @@
 import "./SignIn.css";
 // import PassTextFiled from "../PassTextFiled/PassTextFiled";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -23,7 +23,6 @@ const SignIn = () => {
         password: password,
       })
       .then((response) => {
-        console.log("token :>> ", response.data.token);
         const token = response.data.token;
         localStorage.setItem("token", token);
         setUsernameError("");

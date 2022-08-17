@@ -2,6 +2,7 @@ import "./PollList.css";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
 import usePollData from "./usePollData";
+import useUsername from "../Header/useUsername";
 import React, { useState, useEffect } from "react";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -11,24 +12,8 @@ import axios from "axios";
 const PollList = () => {
   const navigate = useNavigate();
   const [pollData] = usePollData();
-  const [name, setName] = useState("");
+  const [name] = useUsername();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/user`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        const username = res.data[0].username;
-        setName(username);
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
-  }, []);
 
   let poll = pollData.map((data) => {
     return (

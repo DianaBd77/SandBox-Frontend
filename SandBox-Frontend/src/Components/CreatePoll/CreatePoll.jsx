@@ -1,6 +1,6 @@
 import "./CreatePoll.css";
 import Header from "../Header/Header";
-import CreatePollModal from "../CreatePollModal/CreatePollModal";
+import useUsername from "../Header/useUsername";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import axios from "axios";
 
 const CreatePoll = () => {
   const navigate = useNavigate();
+  const [name] = useUsername();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
@@ -15,25 +16,6 @@ const CreatePoll = () => {
   const [secondOption, setSecondOption] = useState("");
   const [thirdOption, setThirdOption] = useState("");
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
-  const [openModal, setOpenModal] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    axios
-      .get(`http://localhost:3001/user`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        const username = res.data[0].username;
-        setName(username);
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
-  }, []);
 
   const createNewPoll = async () => {
     if (
@@ -121,17 +103,14 @@ const CreatePoll = () => {
           authorization: `Bearer ${token}`,
         },
       })
-      .then(async(res) => {
+      .then(async (res) => {
         let link = await res.data[0].link;
-        if(link){
-          setOpenModal(link);
-        }
+        navigate(`/poll-link/${link}`);
       })
       .catch((err) => {
         console.log("err :>> ", err);
       });
   };
-
 
   return (
     <div className="page-container">
@@ -206,7 +185,6 @@ const CreatePoll = () => {
           >
             Submit
           </Button>
-          {/* <CreatePollModal link = {openModal} /> */}
         </div>
       </div>
     </div>
