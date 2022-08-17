@@ -32,6 +32,11 @@
   opacity: 38%;
 }
 
+.app-bar-text:hover{
+  cursor: pointer;
+  opacity: 100%;
+}
+
 .header-logo {
   font-size: 2em;
 }
