@@ -1,5 +1,5 @@
 import "./Card.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import AvatarPro from "../Avatar/Avatar";
 import ShareModal from "../ShareModal/ShareModal";
@@ -10,8 +10,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import Edit from "@mui/icons-material/Edit";
-import Poll from "@mui/icons-material/Poll";
-
 
 const ImgCard = ({
   title,
@@ -24,27 +22,39 @@ const ImgCard = ({
   id,
 }) => {
   const navigate = useNavigate();
-  let totalParticipants = parseInt(`${participants}`) - 1;
+  const [participantExist, setParticipantExist] = useState(false);
+  const [pollParticipants, setPollParticipants] = useState(0);
+  const [zero, setZero] = useState(false);
+
   let word = name && name.split("");
   let username = name && word[0].toUpperCase() + word.slice(1).join("");
   let pollLink = `${link}`;
+  let totalParticipants = parseInt(`${participants}`);
 
-  const [zero, setZero] = useState(false);
-  // if (`${participants}` === "0"){
-  //   setZero(true);
-  // }
+  useEffect(() => {
+    if (totalParticipants > 0) {
+      setParticipantExist(true);
+    }
+
+    let eachPollParticipants = totalParticipants - 1;
+    setPollParticipants(eachPollParticipants);
+
+    if (eachPollParticipants === 0) {
+      setZero(true);
+    }
+  }, []);
 
   return (
     <Card className="card">
       <div className="card-pic-container">
-      <CardMedia
-        className="card-img"
-        component="img"
-        // alt={alt}
-        width = "110"
-        height="110"
-        image={img}
-      />
+        <CardMedia
+          className="card-img"
+          component="img"
+          // alt={alt}
+          width="110"
+          height="110"
+          image={img}
+        />
       </div>
       <CardContent className="card-content">
         <Typography gutterBottom variant="h5" component="div">
@@ -58,9 +68,18 @@ const ImgCard = ({
           {description}
         </Typography>
         <div className="card-header-container">
-          <div className="participant-container">
+          <div
+            className="participant-container"
+            style={{ display: participantExist ? "flex" : "none" }}
+          >
             <AvatarPro username={username} />
-            <p className="card-participants-text"> + {totalParticipants} </p>
+            <p
+              className="card-participants-text"
+              style={{ display: zero ? "none" : "inline" }}
+            >
+              {" "}
+              + {pollParticipants}{" "}
+            </p>
           </div>
           <div className="card-icon-container">
             <ShareModal className="card-icons" link={pollLink} />
@@ -70,10 +89,7 @@ const ImgCard = ({
                 navigate(`/manage-poll/${pollLink}`);
               }}
             />
-            <DeleteModal
-            className="card-icons" 
-            link={pollLink}
-            id = {id} />
+            <DeleteModal className="card-icons" link={pollLink} id={id} />
           </div>
         </div>
       </CardContent>

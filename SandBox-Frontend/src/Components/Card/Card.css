@@ -7,6 +7,7 @@
   border-bottom: 0.5px solid #00000017 !important;
   padding: 4px !important;
   margin-left: 0px !important;
+  position: relative !important;
 }
 
 .card-pic-container {
@@ -17,14 +18,12 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px !important;
-  border: none !important;
 }
 
 .card-img {
   width: 110px !important;
   height: 110px !important;
   border-radius: 8px !important;
-  border: none !important;
 }
 
 .card-content {
@@ -57,6 +56,9 @@
   align-items: center;
   width: 10%;
   opacity: 38% !important;
+  bottom: 8px !important;
+  right: 16px !important;
+  position: absolute;
 }
 
 .MuiCardContent-root {
@@ -68,6 +70,10 @@
 }
 
 @media (max-width: 576px) {
+  .card {
+    min-height: 25vh;
+  }
+
   .MuiBox-root {
     display: inline;
   }
