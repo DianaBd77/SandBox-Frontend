@@ -12,6 +12,7 @@ const PollLink = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [name] = useUsername();
+  let link = `localhost:3000/poll/${id}`;
 
   return (
     <div className="poll-link-box">
@@ -38,12 +39,12 @@ const PollLink = () => {
               className="share-poll-link-text-field"
               id="outlined-basic"
               variant="outlined"
-              value={id}
+              value={link}
             />
             <ContentCopy
               className="copy-share-link"
               onClick={() => {
-                navigator.clipboard.writeText(id);
+                navigator.clipboard.writeText(link);
               }}
             />
           </div>
