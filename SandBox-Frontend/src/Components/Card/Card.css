@@ -28,6 +28,11 @@
 
 .card-content {
   padding: 8px 16px !important;
+  width: 70% !important;
+}
+
+.card-content:hover{
+  cursor: pointer;
 }
 
 .participant-container {
@@ -53,12 +58,13 @@
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
-  align-items: center;
+  /* align-items: center; */
   width: 10%;
   opacity: 38% !important;
   bottom: 8px !important;
   right: 16px !important;
   position: absolute;
+  z-index: 1 !important;
 }
 
 .MuiCardContent-root {

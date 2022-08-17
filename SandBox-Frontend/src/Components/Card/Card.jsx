@@ -20,6 +20,7 @@ const ImgCard = ({
   name,
   link,
   id,
+  fetchData,
 }) => {
   const navigate = useNavigate();
   const [participantExist, setParticipantExist] = useState(false);
@@ -42,7 +43,7 @@ const ImgCard = ({
     if (eachPollParticipants === 0) {
       setZero(true);
     }
-  }, []);
+  }, [totalParticipants]);
 
   return (
     <Card className="card">
@@ -56,7 +57,10 @@ const ImgCard = ({
           image={img}
         />
       </div>
-      <CardContent className="card-content">
+      <CardContent
+        className="card-content"
+        onClick={() => navigate(`/poll/${pollLink}`)}
+      >
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
@@ -81,18 +85,23 @@ const ImgCard = ({
               + {pollParticipants}{" "}
             </p>
           </div>
-          <div className="card-icon-container">
-            <ShareModal className="card-icons" link={pollLink} />
-            <Edit
-              className="card-icons"
-              onClick={() => {
-                navigate(`/manage-poll/${pollLink}`);
-              }}
-            />
-            <DeleteModal className="card-icons" link={pollLink} id={id} />
-          </div>
         </div>
       </CardContent>
+      <div className="card-icon-container">
+        <ShareModal className="card-icons" link={pollLink} />
+        <Edit
+          className="card-icons"
+          onClick={() => {
+            navigate(`/manage-poll/${pollLink}`);
+          }}
+        />
+        <DeleteModal
+          className="card-icons"
+          link={pollLink}
+          id={id}
+          fetchData={fetchData}
+        />
+      </div>
       <CardActions></CardActions>
     </Card>
   );

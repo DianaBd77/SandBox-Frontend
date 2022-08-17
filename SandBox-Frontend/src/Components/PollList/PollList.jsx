@@ -9,9 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const PollList = () => {
   const navigate = useNavigate();
-  const [pollData] = usePollData();
+  const [pollData, fetchData] = usePollData();
   const [name] = useUsername();
-
 
   let poll = pollData.map((data) => {
     return (
@@ -25,6 +24,7 @@ const PollList = () => {
         name={data.name}
         link={data.link}
         id={data.id}
+        fetchData={fetchData}
       />
     );
   });

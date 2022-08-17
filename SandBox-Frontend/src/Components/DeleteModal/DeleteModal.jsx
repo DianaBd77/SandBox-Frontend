@@ -9,7 +9,7 @@ import { Delete } from "@mui/icons-material";
 import { Close } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteModal({ link, id }) {
+export default function DeleteModal({ link, id, fetchData }) {
   const navigate = useNavigate();
 
   let pollLink = `${link}`;
@@ -26,9 +26,10 @@ export default function DeleteModal({ link, id }) {
           authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
+      .then(async(res) => {
         deletePollData(pollID);
-        handleClose();
+        handleClose(); 
+        if (fetchData) await fetchData();
       })
       .catch((err) => {
         let status = err.response.status;
@@ -38,7 +39,7 @@ export default function DeleteModal({ link, id }) {
       });
   };
 
-  const deletePollData = async (id) => {
+  const deletePollData = async (id, fetchData) => {
     const token = localStorage.getItem("token");
 
     const deleteItems = axios.delete(`http://localhost:3001/item/${id}`, {
@@ -64,29 +65,10 @@ export default function DeleteModal({ link, id }) {
 
     await axios
       .all([deleteItems, deleteParticipants, deleteChoices])
-      .then(
-        axios.spread(function (resItem, resParticipant, resChoice) {
-          renderData();
-        })
-      )
+      .then(axios.spread(function (resItem, resParticipant, resChoice) {}))
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const renderData = async() => {
-      const token = localStorage.getItem("token");
-      await axios
-        .get(`http://localhost:3001/poll`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-        })
-        .catch((error) => {
-          console.log(error);
-        });
   };
 
   return (
