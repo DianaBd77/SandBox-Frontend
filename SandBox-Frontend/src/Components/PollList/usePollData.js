@@ -21,7 +21,7 @@ const usePollData = () => {
         console.log(error);
         setErrorMessage(error.message);
       });
-  }, []);
+  }, [pollData]);
 
   return [pollData, errorMessage];
 };

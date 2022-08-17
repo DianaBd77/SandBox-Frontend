@@ -1,6 +1,6 @@
 import "./DeleteModal.css";
 import axios from "axios";
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function DeleteModal({ link, id }) {
   const navigate = useNavigate();
+
   let pollLink = `${link}`;
   let pollID = id;
   const [open, setOpen] = React.useState(false);
@@ -26,7 +27,6 @@ export default function DeleteModal({ link, id }) {
         },
       })
       .then((res) => {
-        console.log("res :>> ", res);
         deletePollData(pollID);
         handleClose();
       })
@@ -62,31 +62,31 @@ export default function DeleteModal({ link, id }) {
       },
     });
 
-    await axios.all([deleteItems, deleteParticipants, deleteChoices]).then(axios.spread(function(resItem, resParticipant, resChoice){
-      console.log('resItem :>> ', resItem);
-      console.log('resParticipant :>> ', resParticipant);
-      console.log('resChoice :>> ', resChoice);
-    }))
+    await axios
+      .all([deleteItems, deleteParticipants, deleteChoices])
+      .then(
+        axios.spread(function (resItem, resParticipant, resChoice) {
+          renderData();
+        })
+      )
       .catch((err) => {
         console.log(err);
       });
+  };
 
-    // axios
-    //   .delete(
-    //     `http://localhost:3001/poll/${id}`,
-    //     {
-    //       headers: {
-    //         authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     console.log("res :>> ", res);
-
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+  const renderData = async() => {
+      const token = localStorage.getItem("token");
+      await axios
+        .get(`http://localhost:3001/poll`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   return (

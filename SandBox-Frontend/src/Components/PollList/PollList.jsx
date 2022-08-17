@@ -3,11 +3,9 @@ import Header from "../Header/Header";
 import Card from "../Card/Card";
 import usePollData from "./usePollData";
 import useUsername from "../Header/useUsername";
-import React, { useState, useEffect } from "react";
 import { Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const PollList = () => {
   const navigate = useNavigate();
