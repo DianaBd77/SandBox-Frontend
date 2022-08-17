@@ -9,7 +9,7 @@ import { Delete } from "@mui/icons-material";
 import { Close } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteModal({ link, id }) {
+export default function DeleteModal({ link, id, fetchData }) {
   const navigate = useNavigate();
   let pollLink = `${link}`;
   let pollID = id;
@@ -29,6 +29,7 @@ export default function DeleteModal({ link, id }) {
         console.log("res :>> ", res);
         deletePollData(pollID);
         handleClose();
+        if (fetchData) fetchData();
       })
       .catch((err) => {
         let status = err.response.status;

@@ -20,6 +20,7 @@ const ImgCard = ({
   name,
   link,
   id,
+  fetchData,
 }) => {
   const navigate = useNavigate();
   const [participantExist, setParticipantExist] = useState(false);
@@ -89,7 +90,12 @@ const ImgCard = ({
                 navigate(`/manage-poll/${pollLink}`);
               }}
             />
-            <DeleteModal className="card-icons" link={pollLink} id={id} />
+            <DeleteModal
+              className="card-icons"
+              link={pollLink}
+              id={id}
+              fetchData={fetchData}
+            />
           </div>
         </div>
       </CardContent>

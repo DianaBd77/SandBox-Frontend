@@ -5,7 +5,7 @@ const usePollData = () => {
   const [pollData, setPollData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
+  const fetchData = () => {
     const token = localStorage.getItem("token");
     axios
       .get(`http://localhost:3001/poll`, {
@@ -21,9 +21,13 @@ const usePollData = () => {
         console.log(error);
         setErrorMessage(error.message);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  return [pollData, errorMessage];
+  return [pollData, errorMessage, fetchData];
 };
 
 export default usePollData;

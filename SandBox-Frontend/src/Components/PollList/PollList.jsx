@@ -11,9 +11,8 @@ import axios from "axios";
 
 const PollList = () => {
   const navigate = useNavigate();
-  const [pollData] = usePollData();
+  const [pollData, error, fetchData] = usePollData();
   const [name] = useUsername();
-
 
   let poll = pollData.map((data) => {
     return (
@@ -27,6 +26,7 @@ const PollList = () => {
         name={data.name}
         link={data.link}
         id={data.id}
+        fetchData={fetchData}
       />
     );
   });
