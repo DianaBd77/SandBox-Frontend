@@ -25,6 +25,7 @@ const Poll = () => {
   const [firstItemValue, setFirstItemValue] = useState("");
   const [secondItemValue, setSecondItemValue] = useState("");
   const [thirdItemValue, setThirdItemValue] = useState("");
+  const [choiceResult, setChoiceResult] = useState([]);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -49,6 +50,7 @@ const Poll = () => {
         setImgURL(imgURL);
         let id = res.data[0].id;
         getItemData(id);
+        getVoteResult(id);
       })
       .catch((err) => {
         console.log("err :>> ", err);
@@ -79,6 +81,38 @@ const Poll = () => {
         console.log("err :>> ", err);
       });
   };
+
+
+  const getVoteResult = (id) => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/choice/id/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        let choices = res.data;
+        setChoiceResult(choices);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  };
+
+
+  let votes = choiceResult.map((data) => {
+    return (
+      <VoteResult
+        key={data.id}
+        participant={data.name}
+        item={data.item}
+      />
+    );
+  });
+
+
+
 
   return (
     <div className="page-container">
@@ -131,8 +165,8 @@ const Poll = () => {
                 </div>
               </div>
             </div>
-            <div className="poll-vote-result-box">
-              <VoteResult />
+            <div className="poll-page-vote-result-box">
+              {votes}
             </div>
             <div className="poll-insert-vote-box">
               <div className="poll-participant-name-container">

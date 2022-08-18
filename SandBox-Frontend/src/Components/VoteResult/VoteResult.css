@@ -2,11 +2,12 @@
   width: 100% !important;
 }
 
-.poll-vote-result-box {
+.poll-vote-final-result-box {
   width: 100%;
   /* border: 3px solid green; */
   display: flex;
   flex-flow: row;
+  padding-bottom: 8px;
 }
 
 .participant-vote-result {

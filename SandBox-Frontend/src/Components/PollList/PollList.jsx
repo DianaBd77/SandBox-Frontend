@@ -10,7 +10,6 @@ import axios from "axios";
 
 const PollList = () => {
   const navigate = useNavigate();
-  // const [pollData, fetchData] = usePollData();
   const [pollData, setPollData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [name] = useUsername();

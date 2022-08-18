@@ -114,10 +114,10 @@
   color: white;
 }
 
-.poll-vote-result-box {
+.poll-page-vote-result-box {
   width: 100%;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   padding: 4px 0;
 }
 
