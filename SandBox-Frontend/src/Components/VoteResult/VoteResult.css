@@ -1,0 +1,25 @@
+.vote-result-card {
+  width: 100% !important;
+}
+
+.poll-vote-result-box {
+  width: 100%;
+  /* border: 3px solid green; */
+  display: flex;
+  flex-flow: row;
+}
+
+.participant-vote-result {
+  background-color: #eaddff;
+}
+
+.vote-participant-name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-participant-name-box {
+  width: 90%;
+  background-color: #eaddff;
+}
