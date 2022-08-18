@@ -21,6 +21,11 @@ const Poll = () => {
   const [imgURL, setImgURL] = useState("");
   const [participantName, setParticipantName] = useState("");
   const [error, setError] = useState("");
+  const [selectedValue, setSelectedValue] = React.useState("a");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -118,17 +123,35 @@ const Poll = () => {
                 <div className="poll-item-title-container">
                   <div className="poll-item-title-box vote-radio-button">
                     <div className="poll-item-title-text">
-                      <Done />
+                      <Radio
+                        checked={selectedValue === "a"}
+                        onChange={handleChange}
+                        value="a"
+                        name="radio-buttons"
+                        inputProps={{ "aria-label": "A" }}
+                      />
                     </div>
                   </div>
                   <div className="poll-item-title-box vote-radio-button">
                     <div className="poll-item-title-text">
-                      <Close />
+                      <Radio
+                        checked={selectedValue === "b"}
+                        onChange={handleChange}
+                        value="b"
+                        name="radio-buttons"
+                        inputProps={{ "aria-label": "B" }}
+                      />
                     </div>
                   </div>
                   <div className="poll-item-title-box vote-radio-button">
                     <div className="poll-item-title-text">
-                      <Close/>
+                      <Radio
+                        checked={selectedValue === "c"}
+                        onChange={handleChange}
+                        value="c"
+                        name="radio-buttons"
+                        inputProps={{ "aria-label": "C" }}
+                      />
                     </div>
                   </div>
                 </div>

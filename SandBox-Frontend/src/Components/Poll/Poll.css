@@ -8,7 +8,6 @@
 .poll-page-container {
   width: 80%;
   padding: 24px 0;
-  /* border: 1px solid black; */
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -34,14 +33,14 @@
   width: 60%;
 }
 
-.poll-page-header-section{
+.poll-page-header-section {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }
 
-.poll-page-icon-box{
+.poll-page-icon-box {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -61,7 +60,6 @@
 
 .poll-vote-container {
   width: 60%;
-  /* border: 1px red solid; */
   padding: 24px 0;
   display: flex;
   flex-flow: column;
@@ -69,21 +67,19 @@
 
 .vote-header-box {
   width: 100%;
-  /* border: 3px solid green; */
   display: flex;
   flex-flow: row;
+  padding: 4px 0;
 }
 
 .poll-participant-name-container {
   width: 35%;
-  /* border: 1px solid blue; */
   display: flex;
   flex-flow: column;
 }
 
 .empty-container {
   height: 80px;
-  /* border: 1px solid black; */
 }
 
 .poll-participant-name-box {
@@ -92,7 +88,6 @@
 
 .poll-result-container {
   width: 65%;
-  /* border: yellow 1px solid; */
   display: flex;
   flex-flow: column;
 }
@@ -102,7 +97,7 @@
   height: 80px;
   display: flex;
   justify-content: space-around;
-  /* border: 1px solid black; */
+  align-items: center;
 }
 
 .poll-item-title-box {
@@ -121,9 +116,9 @@
 
 .poll-vote-result-box {
   width: 100%;
-  /* border: 3px solid green; */
   display: flex;
   flex-flow: row;
+  padding: 4px 0;
 }
 
 .participant-vote-result {
@@ -143,17 +138,41 @@
 
 .poll-insert-vote-box {
   width: 100%;
-  /* border: 3px solid green; */
   display: flex;
   flex-flow: row;
+  padding: 4px 0;
 }
 
-.insert-participant-name-box{
+.insert-participant-name-box {
   width: 90%;
   background-color: white;
 }
 
-
-.vote-radio-button{
+.vote-radio-button {
   background-color: #625b710c;
+  height: 56px !important;
+}
+
+@media (max-width: 768px) {
+  .poll-vote-container,
+  .poll-img-container,
+  .poll-text-container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .poll-page-container {
+    width: 100%;
+  }
+
+  .poll-vote-container,
+  .poll-img-container,
+  .poll-text-container {
+    width: 90%;
+  }
+
+  .poll-img-container {
+    height: 20%;
+  }
 }

@@ -33,11 +33,8 @@
     .list-container {
       padding: 24px 0px !important;
     }
+    .list{
+      min-height: 110vh;
+    }
   }
   
-
-@media (max-width: 576px) {
-  .list{
-    min-height: 110vh;
-  }
-}
