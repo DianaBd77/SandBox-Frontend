@@ -22,12 +22,16 @@ const Poll = () => {
   const [participantName, setParticipantName] = useState("");
   const [error, setError] = useState("");
   const [selectedValue, setSelectedValue] = React.useState("a");
+  const [firstItemValue, setFirstItemValue] = useState("");
+  const [secondItemValue, setSecondItemValue] = useState("");
+  const [thirdItemValue, setThirdItemValue] = useState("");
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
+    console.log("e :>> ", event.target.value);
   };
 
-  useEffect(() => {
+  const getPollData = () => {
     const token = localStorage.getItem("token");
 
     axios
@@ -43,11 +47,38 @@ const Poll = () => {
         setDescription(description);
         let imgURL = res.data[0].img_url;
         setImgURL(imgURL);
+        let id = res.data[0].id;
+        getItemData(id);
       })
       .catch((err) => {
         console.log("err :>> ", err);
       });
+  };
+
+  useEffect(() => {
+    getPollData();
   }, []);
+
+  const getItemData = (id) => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`http://localhost:3001/item/${id}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        let firstItemName = res.data[0].item;
+        setFirstItemValue(firstItemName.toUpperCase());
+        let secondItemName = res.data[1].item;
+        setSecondItemValue(secondItemName.toUpperCase());
+        let thirdItemName = res.data[2].item;
+        setThirdItemValue(thirdItemName.toUpperCase());
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  };
 
   return (
     <div className="page-container">
@@ -89,13 +120,13 @@ const Poll = () => {
               <div className="poll-result-container">
                 <div className="poll-item-title-container">
                   <div className="poll-item-title-box">
-                    <p className="poll-item-title-text">Ski</p>
+                    <p className="poll-item-title-text">{firstItemValue}</p>
                   </div>
                   <div className="poll-item-title-box">
-                    <p className="poll-item-title-text">Hike</p>
+                    <p className="poll-item-title-text">{secondItemValue}</p>
                   </div>
                   <div className="poll-item-title-box">
-                    <p className="poll-item-title-text">Dive</p>
+                    <p className="poll-item-title-text">{thirdItemValue}</p>
                   </div>
                 </div>
               </div>
@@ -135,9 +166,9 @@ const Poll = () => {
                   <div className="poll-item-title-box vote-radio-button">
                     <div className="poll-item-title-text">
                       <Radio
-                        checked={selectedValue === "b"}
+                        checked={selectedValue === "B"}
                         onChange={handleChange}
-                        value="b"
+                        value="B"
                         name="radio-buttons"
                         inputProps={{ "aria-label": "B" }}
                       />
