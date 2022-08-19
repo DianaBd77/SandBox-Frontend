@@ -57,7 +57,7 @@ const SignIn = () => {
     }
 
     axios
-      .post(`http://dianabehshad.xyz:80/api/account/signup`, {
+      .post(`http://dianabehshad.xyz/api/account/signup`, {
         username: username,
         password: password,
         first_name: firstName,

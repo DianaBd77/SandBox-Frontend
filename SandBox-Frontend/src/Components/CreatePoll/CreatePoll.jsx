@@ -30,7 +30,7 @@ const CreatePoll = () => {
     const token = localStorage.getItem("token");
     axios
       .post(
-        `http://dianabehshad.xyz:80/api/poll`,
+        `http://dianabehshad.xyz/api/poll`,
         {
           title: title,
           description: description,
@@ -61,7 +61,7 @@ const CreatePoll = () => {
     const pollID = id;
     axios
       .post(
-        `http://dianabehshad.xyz:80/api/item`,
+        `http://dianabehshad.xyz/api/item`,
         [
           {
             poll_id: pollID,
@@ -98,7 +98,7 @@ const CreatePoll = () => {
   const getNewPollLink = async (id) => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://dianabehshad.xyz:80/api/poll/pollID/${id}`, {
+      .get(`http://dianabehshad.xyz/api/poll/pollID/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

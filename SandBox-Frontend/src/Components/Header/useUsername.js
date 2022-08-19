@@ -7,7 +7,7 @@ const useUsername = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://dianabehshad.xyz:80/api/user`, {
+      .get(`http://dianabehshad.xyz/api/user`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

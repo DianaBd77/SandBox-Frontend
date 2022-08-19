@@ -38,7 +38,7 @@ const Poll = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get(`http://dianabehshad.xyz:80/api/poll/${id}`, {
+      .get(`http://dianabehshad.xyz/api/poll/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -67,7 +67,7 @@ const Poll = () => {
   const getItemData = (id) => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://dianabehshad.xyz:80/api/item/${id}`, {
+      .get(`http://dianabehshad.xyz/api/item/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -95,7 +95,7 @@ const Poll = () => {
   const getVoteResult = (id) => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://dianabehshad.xyz:80/api/choice/id/${id}`, {
+      .get(`http://dianabehshad.xyz/api/choice/id/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -118,7 +118,7 @@ const Poll = () => {
     let name = `${participantName}`;
     const token = localStorage.getItem("token");
     axios
-      .post(`http://dianabehshad.xyz:80/api/participant`, {
+      .post(`http://dianabehshad.xyz/api/participant`, {
         poll_id: pollID,
         name: name,
       })
@@ -147,7 +147,7 @@ const Poll = () => {
     }
 
     axios
-      .post(`http://dianabehshad.xyz:80/api/choice`, {
+      .post(`http://dianabehshad.xyz/api/choice`, {
         poll_id: pollID,
         participant_id: id,
         item_id: itemID,
