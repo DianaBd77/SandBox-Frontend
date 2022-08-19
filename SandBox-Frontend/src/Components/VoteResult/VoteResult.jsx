@@ -1,9 +1,28 @@
 import "./VoteResult.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Done, Close } from "@mui/icons-material";
 
-const VoteResult = ({participant, item}) => {
-  const [participantName, setParticipantName] = useState("");
+const VoteResult = ({ participant, id, firstID, secondID, thirdID }) => {
+  const [firstChoice, setFirstChoice] = useState(false);
+  const [secondChoice, setSecondChoice] = useState(false);
+  const [thirdChoice, setThirdChoice] = useState(false);
+  let word = participant && participant.split("");
+  let participantName =
+    participant && word[0].toUpperCase() + word.slice(1).join("");
+
+  useEffect(() => {
+    if (firstID === id) {
+      setFirstChoice(true);
+    }
+
+    if (secondID === id) {
+      setSecondChoice(true);
+    }
+
+    if (thirdID === id) {
+      setThirdChoice(true);
+    }
+  }, []);
 
   return (
     <div className="vote-result-card">
@@ -11,47 +30,55 @@ const VoteResult = ({participant, item}) => {
         <div className="poll-participant-name-container">
           <div className="vote-participant-name-container">
             <div className="poll-item-title-box vote-participant-name-box">
-              <p>{participant}</p>
+              <p>{participantName}</p>
             </div>
           </div>
           <div className="poll-participant-name-box"></div>
         </div>
         <div className="poll-result-container">
           <div className="poll-item-title-container">
-            <div className="poll-item-title-box participant-vote-result">
+            <div
+              className="poll-item-title-box participant-vote-result"
+              style={{ backgroundColor: firstChoice ? "#EADDFF" : "#F6EDFF" }}
+            >
               <div className="poll-item-title-text">
                 <Done
-                  sx={{ width: "40px", height: "40px", color: "#381e72" }}
+                  className="vote-done-icon"
+                  style={{ display: firstChoice ? "inline" : "none" }}
+                />
+                <Close
+                  className="vote-close-icon"
+                  style={{ display: firstChoice ? "none" : "inline" }}
                 />
               </div>
             </div>
             <div
               className="poll-item-title-box participant-vote-result"
-              style={{ backgroundColor: "#F6EDFF" }}
+              style={{ backgroundColor: secondChoice ? "#EADDFF" : "#F6EDFF" }}
             >
               <div className="poll-item-title-text">
+                <Done
+                  className="vote-done-icon"
+                  style={{ display: secondChoice ? "inline" : "none" }}
+                />
                 <Close
-                  sx={{
-                    width: "40px",
-                    height: "40px",
-                    color: "black",
-                    opacity: "5%",
-                  }}
+                  className="vote-close-icon"
+                  style={{ display: secondChoice ? "none" : "inline" }}
                 />
               </div>
             </div>
             <div
               className="poll-item-title-box participant-vote-result"
-              style={{ backgroundColor: "#F6EDFF" }}
+              style={{ backgroundColor: thirdChoice ? "#EADDFF" : "#F6EDFF" }}
             >
               <div className="poll-item-title-text">
+                <Done
+                  className="vote-done-icon"
+                  style={{ display: thirdChoice ? "inline" : "none" }}
+                />
                 <Close
-                  sx={{
-                    width: "40px",
-                    height: "40px",
-                    color: "black",
-                    opacity: "5%",
-                  }}
+                  className="vote-close-icon"
+                  style={{ display: thirdChoice ? "none" : "inline" }}
                 />
               </div>
             </div>

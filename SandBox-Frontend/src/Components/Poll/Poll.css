@@ -63,6 +63,7 @@
   padding: 24px 0;
   display: flex;
   flex-flow: column;
+  align-items: center;
 }
 
 .vote-header-box {
@@ -80,10 +81,6 @@
 
 .empty-container {
   height: 80px;
-}
-
-.poll-participant-name-box {
-  /* border: 1px solid palegreen; */
 }
 
 .poll-result-container {
@@ -151,6 +148,17 @@
 .vote-radio-button {
   background-color: #625b710c;
   height: 56px !important;
+}
+
+.poll-page-submit-button {
+  width: 98% !important;
+}
+
+.poll-vote-error {
+  color: red;
+  width: 96%;
+  font-size: 0.8em;
+  margin: 0 0 16px 0;
 }
 
 @media (max-width: 768px) {

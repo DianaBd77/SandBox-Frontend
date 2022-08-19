@@ -4,15 +4,14 @@
 
 .poll-vote-final-result-box {
   width: 100%;
-  /* border: 3px solid green; */
   display: flex;
   flex-flow: row;
   padding-bottom: 8px;
 }
 
-.participant-vote-result {
+/* .participant-vote-result {
   background-color: #eaddff;
-}
+} */
 
 .vote-participant-name-container {
   display: flex;
@@ -23,4 +22,17 @@
 .vote-participant-name-box {
   width: 90%;
   background-color: #eaddff;
+}
+
+.vote-done-icon {
+  width: 40px !important;
+  height: 40px !important;
+  color: #381e72 !important;
+}
+
+.vote-close-icon {
+  width: 40px !important;
+  height: 40px !important;
+  color: black !important;
+  opacity: 5%;
 }

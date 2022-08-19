@@ -6,7 +6,6 @@ import ShareModal from "../ShareModal/ShareModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
-import { Done, Close } from "@mui/icons-material";
 import Radio from "@mui/material/Radio";
 import Edit from "@mui/icons-material/Edit";
 import { useNavigate, useParams } from "react-router-dom";
@@ -20,16 +19,19 @@ const Poll = () => {
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [participantName, setParticipantName] = useState("");
-  const [error, setError] = useState("");
   const [selectedValue, setSelectedValue] = React.useState("a");
   const [firstItemValue, setFirstItemValue] = useState("");
   const [secondItemValue, setSecondItemValue] = useState("");
   const [thirdItemValue, setThirdItemValue] = useState("");
+  const [firstItemID, setFirstItemID] = useState(0);
+  const [secondItemID, setSecondItemID] = useState(0);
+  const [thirdItemID, setThirdItemID] = useState(0);
   const [choiceResult, setChoiceResult] = useState([]);
+  const [pollID, setPollID] = useState(0);
+  const [error, setError] = useState("");
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
-    console.log("e :>> ", event.target.value);
   };
 
   const getPollData = () => {
@@ -49,6 +51,7 @@ const Poll = () => {
         let imgURL = res.data[0].img_url;
         setImgURL(imgURL);
         let id = res.data[0].id;
+        setPollID(id);
         getItemData(id);
         getVoteResult(id);
       })
@@ -76,12 +79,18 @@ const Poll = () => {
         setSecondItemValue(secondItemName.toUpperCase());
         let thirdItemName = res.data[2].item;
         setThirdItemValue(thirdItemName.toUpperCase());
+
+        let firstID = res.data[0].id;
+        setFirstItemID(firstID);
+        let secondID = res.data[1].id;
+        setSecondItemID(secondID);
+        let thirdID = res.data[2].id;
+        setThirdItemID(thirdID);
       })
       .catch((err) => {
         console.log("err :>> ", err);
       });
   };
-
 
   const getVoteResult = (id) => {
     const token = localStorage.getItem("token");
@@ -100,6 +109,58 @@ const Poll = () => {
       });
   };
 
+  const insertName = () => {
+    if (participantName === "") {
+      setError("Name Filed Can't Be Empty!");
+      return;
+    }
+
+    let name = `${participantName}`;
+    const token = localStorage.getItem("token");
+    axios
+      .post(`http://localhost:3001/participant`, {
+        poll_id: pollID,
+        name: name,
+      })
+      .then((res) => {
+        console.log("res :>> ", res);
+        const id = res.data[0].insertId;
+        insertVote(id);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  };
+
+  const insertVote = (id) => {
+    console.log("selectedValue :>> ", selectedValue);
+    let itemID = 0;
+    if (selectedValue === "a") {
+      itemID = firstItemID;
+    }
+
+    if (selectedValue === "b") {
+      itemID = secondItemID;
+    }
+    if (selectedValue === "c") {
+      itemID = thirdItemID;
+    }
+
+    axios
+      .post(`http://localhost:3001/choice`, {
+        poll_id: pollID,
+        participant_id: id,
+        item_id: itemID,
+      })
+      .then(() => {
+        getVoteResult(pollID);
+        setParticipantName("");
+        setSelectedValue("a");
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  };
 
   let votes = choiceResult.map((data) => {
     return (
@@ -107,12 +168,13 @@ const Poll = () => {
         key={data.id}
         participant={data.name}
         item={data.item}
+        id={data.id}
+        firstID={firstItemID}
+        secondID={secondItemID}
+        thirdID={thirdItemID}
       />
     );
   });
-
-
-
 
   return (
     <div className="page-container">
@@ -165,9 +227,7 @@ const Poll = () => {
                 </div>
               </div>
             </div>
-            <div className="poll-page-vote-result-box">
-              {votes}
-            </div>
+            <div className="poll-page-vote-result-box">{votes}</div>
             <div className="poll-insert-vote-box">
               <div className="poll-participant-name-container">
                 <div className="vote-participant-name-container">
@@ -200,9 +260,9 @@ const Poll = () => {
                   <div className="poll-item-title-box vote-radio-button">
                     <div className="poll-item-title-text">
                       <Radio
-                        checked={selectedValue === "B"}
+                        checked={selectedValue === "b"}
                         onChange={handleChange}
-                        value="B"
+                        value="b"
                         name="radio-buttons"
                         inputProps={{ "aria-label": "B" }}
                       />
@@ -222,6 +282,14 @@ const Poll = () => {
                 </div>
               </div>
             </div>
+            <p className="poll-vote-error">{error}</p>
+            <Button
+              variant="contained"
+              className="manage-poll-btn poll-page-submit-button"
+              onClick={insertName}
+            >
+              Submit
+            </Button>
           </div>
         </div>
       </div>

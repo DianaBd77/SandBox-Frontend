@@ -1,17 +1,17 @@
-.list{
-    width: 100%;
-    min-height: 95vh;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+.list {
+  width: 100%;
+  min-height: 95vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-.list-container{
-    width: 90%;
-    margin-top: 24px;
+.list-container {
+  width: 90%;
+  margin-top: 24px;
 }
 
-.list-card-container{
+.list-card-container {
   width: 100%;
   padding-top: 24px;
   display: flex;
@@ -19,22 +19,19 @@
   align-items: center;
 }
 
-
-.MuiFab-root{
-    background-color: #6750A4 !important;
-    position: fixed !important;
-    bottom: 56px !important;
-    right: 16px !important;
-    margin-left: 0 !important;
+.MuiFab-root {
+  background-color: #6750a4 !important;
+  position: fixed !important;
+  bottom: 56px !important;
+  right: 16px !important;
+  margin-left: 0 !important;
 }
 
-
 @media (max-width: 576px) {
-    .list-container {
-      padding: 24px 0px !important;
-    }
-    .list{
-      min-height: 110vh;
-    }
+  .list-container {
+    padding: 24px 0px !important;
   }
-  
+  .list {
+    min-height: 110vh;
+  }
+}
