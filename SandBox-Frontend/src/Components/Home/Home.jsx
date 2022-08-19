@@ -11,7 +11,7 @@ const Home = () => {
   const loggedIn = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/user`, {
+      .get(`http://dianabehshad.xyz:80/api/user`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

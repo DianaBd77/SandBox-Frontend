@@ -21,7 +21,7 @@ export default function DeleteModal({ link, id, fetchData }) {
   const deletePoll = () => {
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:3001/poll/${pollLink}`, {
+      .delete(`http://dianabehshad.xyz:80/api/poll/${pollLink}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -42,14 +42,14 @@ export default function DeleteModal({ link, id, fetchData }) {
   const deletePollData = async (id, fetchData) => {
     const token = localStorage.getItem("token");
 
-    const deleteItems = axios.delete(`http://localhost:3001/item/${id}`, {
+    const deleteItems = axios.delete(`http://dianabehshad.xyz:80/api/item/${id}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
     });
 
     const deleteParticipants = axios.delete(
-      `http://localhost:3001/participant/${id}`,
+      `http://dianabehshad.xyz:80/api/participant/${id}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ export default function DeleteModal({ link, id, fetchData }) {
       }
     );
 
-    const deleteChoices = axios.delete(`http://localhost:3001/choice/${id}`, {
+    const deleteChoices = axios.delete(`http://dianabehshad.xyz:80/api/choice/${id}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },

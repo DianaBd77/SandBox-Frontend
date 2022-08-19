@@ -19,7 +19,7 @@ const ManagePoll = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get(`http://localhost:3001/poll/${id}`, {
+      .get(`http://dianabehshad.xyz:80/api/poll/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -45,7 +45,7 @@ const ManagePoll = () => {
     const token = localStorage.getItem("token");
     axios
       .patch(
-        `http://localhost:3001/poll/${id}`,
+        `http://dianabehshad.xyz:80/api/poll/${id}`,
         {
           title: title,
           description: description,

@@ -17,7 +17,7 @@ const PollList = () => {
   const fetchData = () => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:3001/poll`, {
+      .get(`http://dianabehshad.xyz:80/api/poll`, {
         headers: {
           authorization: `Bearer ${token}`,
         },

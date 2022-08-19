@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import { useNavigate, useParams } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { ContentCopy } from "@mui/icons-material";
-import axios from "axios";
 
 const PollLink = () => {
   const navigate = useNavigate();
