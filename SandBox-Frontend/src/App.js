@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import Home from "./Components/Home/Home";
 import Poll from "./Components/Poll/Poll";
 import Footer from "./Components/Footer/Footer";
@@ -10,7 +11,6 @@ import UserPanel from "./Components/UserPanel/UserPanel";
 import ManagePoll from "./Components/ManagePoll/ManagePoll";
 import CreatePoll from "./Components/CreatePoll/CreatePoll";
 import Navigation from "./Components/BottomNavigation/BottomNavigation";
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {

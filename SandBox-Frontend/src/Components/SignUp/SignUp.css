@@ -1,118 +1,114 @@
-.sign-up{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }  
+.sign-up {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
- .sign-up-container{
-    border: 0.5px solid #00000017;
-    border-radius: 16px;
-    width: 30%;
-    height: 80%;
-    display: flex;
-    flex-flow: column;
-    padding: 24px;
- }
+.sign-up-container {
+  border: 0.5px solid #00000017;
+  border-radius: 16px;
+  width: 30%;
+  height: 80%;
+  display: flex;
+  flex-flow: column;
+  padding: 24px;
+}
 
- .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 8px !important;
- }
+}
 
- .header{
-    margin-top: 0;
- }
+.header {
+  margin-top: 0;
+}
 
- .sign-up-text{
-  font-size: .7em;
+.sign-up-text {
+  font-size: 0.7em;
   margin: 8px 0;
- }
+}
 
- .error{
+.error {
   color: red;
- }
+}
 
- .account-text{
+.account-text {
   display: flex;
   flex-flow: row wrap;
- }
+}
 
- .have-account{
+.have-account {
   text-decoration: underline;
-  color: #6750A4;
+  color: #6750a4;
   display: inline;
- }
+}
 
- .have-account:hover{
+.have-account:hover {
   cursor: pointer;
- }
+}
 
-
-.sign-up-btn{
+.sign-up-btn {
   width: 100%;
   height: 44px !important;
   border-radius: 8px !important;
-  background-color: #6750A4 !important;
+  background-color: #6750a4 !important;
 }
 
-.sign-up-username{
-    display: flex !important;
-    justify-content: space-between !important;
+.sign-up-username {
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
-.sign-up-name-container{
-    width: 48% !important;
+.sign-up-name-container {
+  width: 48% !important;
 }
 
-
-.user-pass{
-    display: flex;
-    justify-content: space-between;
+.user-pass {
+  display: flex;
+  justify-content: space-between;
 }
 
-.pass-container{
-    width: 48%;
+.pass-container {
+  width: 48%;
 }
-
-
 
 @media (max-width: 992px) {
-  .sign-up-container{
+  .sign-up-container {
     width: 40%;
- }
+  }
 }
 
 @media (max-width: 867px) {
-  .sign-up-btn{
+  .sign-up-btn {
     margin: 0 !important;
   }
 }
 
 @media (max-width: 768px) {
-  .sign-up{
+  .sign-up {
     padding-top: 24px;
   }
 
-  .sign-up-container{
+  .sign-up-container {
     width: 60%;
     height: 90%;
- }
-  .sign-up-btn{
+  }
+  .sign-up-btn {
     margin: 0 !important;
   }
 }
 
 @media (max-width: 576px) {
-  .sign-up-container{
+  .sign-up-container {
     border: none;
     width: 100%;
   }
-  .sign-up{
+  .sign-up {
     padding: 0;
   }
 
-  .header{
+  .header {
     margin-top: 0;
   }
 }

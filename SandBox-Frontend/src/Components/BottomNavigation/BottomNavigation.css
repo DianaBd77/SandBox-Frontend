@@ -1,7 +1,6 @@
-.MuiBox-root{
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    background-color: white !important;
+.MuiBox-root {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white !important;
 }
-

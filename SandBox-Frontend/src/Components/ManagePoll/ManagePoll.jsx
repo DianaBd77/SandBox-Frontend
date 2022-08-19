@@ -57,8 +57,7 @@ const ManagePoll = () => {
           },
         }
       )
-      .then((res) => {
-        console.log("res :>> ", res);
+      .then(() => {
         navigate("/list");
       })
       .catch((err) => {

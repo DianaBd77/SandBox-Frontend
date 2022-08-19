@@ -4,7 +4,6 @@
   position: relative;
 }
 
-
 .MuiBox-root {
   display: none;
 }
@@ -20,7 +19,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -31,7 +29,7 @@
 }
 
 @media (max-width: 768px) {
-  .app{
+  .app {
     width: 100%;
   }
 

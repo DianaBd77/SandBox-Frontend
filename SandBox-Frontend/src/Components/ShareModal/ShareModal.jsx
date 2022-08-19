@@ -48,8 +48,10 @@ export default function ShareModal({ link }) {
               value={pollLink}
             />
             <ContentCopy
-            className="copy-share-link"
-            onClick={() => {navigator.clipboard.writeText(pollLink)}}
+              className="copy-share-link"
+              onClick={() => {
+                navigator.clipboard.writeText(pollLink);
+              }}
             />
           </div>
         </Box>

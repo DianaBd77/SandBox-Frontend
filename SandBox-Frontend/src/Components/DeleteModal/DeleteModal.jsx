@@ -26,10 +26,10 @@ export default function DeleteModal({ link, id, fetchData }) {
           authorization: `Bearer ${token}`,
         },
       })
-      .then(async(res) => {
+      .then((res) => {
         deletePollData(pollID);
-        handleClose(); 
-        if (fetchData) await fetchData();
+        handleClose();
+        if (fetchData) fetchData();
       })
       .catch((err) => {
         let status = err.response.status;
