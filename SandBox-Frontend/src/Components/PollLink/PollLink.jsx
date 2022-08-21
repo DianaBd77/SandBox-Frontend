@@ -1,17 +1,19 @@
 import "./PollLink.css";
 import Header from "../Header/Header";
 import useUsername from "../Header/useUsername";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { useNavigate, useParams } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { ContentCopy } from "@mui/icons-material";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const PollLink = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [name] = useUsername();
-  let link = `localhost:3000/poll/${id}`;
+  const [copied, setCopied] = useState(false);
+  let link = `http://dianabehshad.xyz/poll/${id}`;
 
   return (
     <div className="poll-link-box">
@@ -40,12 +42,9 @@ const PollLink = () => {
               variant="outlined"
               value={link}
             />
-            <ContentCopy
-              className="copy-share-link"
-              onClick={() => {
-                navigator.clipboard.writeText(link);
-              }}
-            />
+            <CopyToClipboard text={link} onCopy={() => () => setCopied(true)}>
+              <ContentCopy className="copy-share-link" />
+            </CopyToClipboard>
           </div>
           <Button
             variant="contained"

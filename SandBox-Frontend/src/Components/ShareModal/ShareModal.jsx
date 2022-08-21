@@ -7,9 +7,11 @@ import { TextField } from "@mui/material";
 import { Share } from "@mui/icons-material";
 import { ContentCopy } from "@mui/icons-material";
 import { Close } from "@mui/icons-material";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function ShareModal({ link }) {
-  let pollLink = `localhost:3000/poll/${link}`;
+  let pollLink = `http://dianabehshad.xyz/poll/${link}`;
+  const [copied, setCopied] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -47,12 +49,14 @@ export default function ShareModal({ link }) {
               variant="outlined"
               value={pollLink}
             />
-            <ContentCopy
-              className="copy-share-link"
-              onClick={() => {
-                navigator.clipboard.writeText(pollLink);
-              }}
-            />
+            <CopyToClipboard
+              text={pollLink}
+              onCopy={() => () => setCopied(true)}
+            >
+              <ContentCopy
+                className="copy-share-link"
+              />
+            </CopyToClipboard>
           </div>
         </Box>
       </Modal>
